@@ -1,0 +1,284 @@
+body
+{
+  background-color: white;
+  color: black;
+}
+html 
+{
+  scroll-behavior: smooth;
+  cursor: crosshair;
+}
+
+a
+{
+  text-decoration: none;
+}
+#navbar
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: black;
+  background-color: silver;
+  z-index: 999;
+  width: 25vw;
+  height: 100vh;
+  animation-name: wjazd;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+}
+#navhead
+{
+  cursor: crosshair;
+  font-family: 'VT323', cursive;
+  text-shadow: 4px 4px cyan;
+  font-weight: bold;
+  text-align: center;
+  font-size: 36px;
+  line-height: 3;
+  color: black;
+  text-decoration: none;
+}
+#navhead:hover
+{
+  background-color: black;
+  color: white;
+  
+  animation-name: homelink;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+@keyframes homelink
+{
+  0%
+  {
+    color: white;
+    width: 25vw;
+  }
+  25%
+  {
+    width: 300vw;
+  }
+  
+  50%
+  {
+    background-color: black;
+    color: black;
+    width: 100vw;
+    opacity: 0.8;
+  }
+  
+  90%
+  {
+    
+    color: white;
+    width: 100vw;
+  }
+  100%
+  {
+    background-color: white;
+    width: 25vw;
+  }
+}
+.navlink
+{
+ 
+  color: black;
+  text-align: center;
+  font-size: 28px;
+  text-shadow: 4px 4px cyan;
+  font-family: VT323, monospace;
+  line-height: 3;
+  animation-name: wjazd2;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  cursor: crosshair;
+
+}
+.navlink:hover
+{
+  animation-name: navhover;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  width: 100vw;
+}
+@keyframes navhover
+{
+  0%
+  {
+    color: white;
+      box-shadow: 0vw 0vh 0vw 0vh cyan;
+    }
+  
+  50%
+  {background-color: white;
+    color: black;
+    box-shadow: 5vw 0vh 10vw 55vh yellow;
+  }
+  
+  100%
+  {background-color: auto;
+    color: white;
+    box-shadow: 0vw 0vh 0vw 0vh violet;
+
+  }
+}
+.nav-link
+{
+  text-decoration: none;
+  color: white;
+}
+.nav-link:hover
+{
+  text-decoration: none;
+  color: black;
+}
+.nav-link:visited
+{
+  text-decoration: none;
+  color: white;
+}
+.nav-link:active
+{
+  text-decoration: none;
+  color: white;
+}
+#main-doc
+{
+    
+  color: black;
+  font-size: 16px;
+  position: absolute;
+  top: 0;
+  left: 25vw;
+}
+.main-header
+{
+  background-color: #FFEEDE;
+  color: black;
+  font-family: 'VT323', cursive;
+  text-shadow: 4px 4px cyan;
+  font-weight: bold;
+  font-size: 36px;
+  text-align: right;
+  line-height: 3;
+  animation-name: wjazd;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
+  z-index: 1500;
+}
+.main-content
+{
+  min-height: 80vw;
+  font-family: VT323, monospace;
+  padding: 1vw 1vw 1vw 1vw;
+  text-align: justify;
+  font-size: 24px
+}
+code
+{
+  border-radius: 0% 50% 50% 0%;
+  display: block;
+  font-family: VT323, monospace;
+  text-align: center;
+  color: black;
+  width: 30vw;
+  box-shadow: 1vw 1vh 5vw 1vw cyan;
+  background-color: white;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 2;
+  margin-left: -13px;
+  margin-top: 26vh;
+  margin-bottom: 26vh;
+  opacity: 0.5;
+}
+@media (max-width: 250px)
+{
+  body
+  {
+    width="100vw"
+  }
+}
+
+
+@keyframes wjazd
+{
+  0%
+  {
+    background-color: white;
+    color: black;
+  }
+  10%
+  {
+    color: white;
+  }
+  20%
+  {
+    color: black;
+  }
+  30%
+  {
+    color: white;
+  }
+  40%
+  {
+    color: black;
+  }
+  50%
+  {
+    background-color: white;
+    color: white;
+  }
+  60%
+  {
+    color: black;
+  }
+  70%
+  {
+    color: white;
+  }
+  80%
+  {
+    color: black;
+  }
+  90%
+  {
+    color: white;
+  }
+  100%
+  {
+    background-color: white;
+    color: black;
+  }
+}
+@keyframes wjazd2
+{
+  0%
+  {
+    position: absolute;
+    left: 100vw;
+  }
+  50%
+  {
+    left: 0vw;
+  }
+}
+#sf2:hover
+{
+  background-image: url("https://s2.gifyu.com/images/sf2-1.gif");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 120%;
+}
+#Media
+{  
+  background-image: url("https://s2.gifyu.com/images/sf2-1.gif");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 120%;
+  color: white;
+  
+}
