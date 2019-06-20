@@ -25,6 +25,10 @@ a:visited:
 {
   color: #f55;
 }
+ul
+{
+	list-style: none;
+}
 #navbar
 {
   position: fixed;
