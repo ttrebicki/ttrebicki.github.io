@@ -41,14 +41,15 @@ a:visited:
 #navhead
 {
   cursor: crosshair;
-  font-family: 'VT323', cursive;
+  font-family: sans-serif;
   text-shadow: 4px 4px cyan;
   font-weight: bold;
   text-align: center;
   font-size: 48px;
   line-height: 3;
-  color: black;
+  color: white;
   text-decoration: none;
+  padding: 1vh 5vw 1vh 5vw;
 }
 #navhead:hover
 {
