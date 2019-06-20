@@ -192,6 +192,7 @@ a:visited:
 {
   cursor: pointer;
   line-height: 2;
+  letter-spacing: 4px;
 }
 .cv:hover
 {
@@ -261,10 +262,13 @@ a:visited:
 #mockup1
 {
   width: 25%;
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 }
 #mockup1:hover
 {
   width: auto;
+  filter: none;
 }
 
 @keyframes wjazd
