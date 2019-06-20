@@ -1,64 +1,136 @@
-<link rel="stylesheet" type="text" href="documentation.css">
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+<link rel="stylesheet" type="text/css" href="css.css">
+<link href="https://fonts.googleapis.com/css?family=Cutive+Mono|Open+Sans|Oswald&display=swap" rel="stylesheet">
 
-<nav id="navbar">
-  <a href="#welcome-section" class="navlink">HOME</a>
-  <a href="#projects" class="navlink">PROJECTS</a>
-  <a href="#contact" class="navlink">CONTACT</a>
-</nav>
+<body>
+  <nav id="navbar">
+    <a href="#">
+      <header id="navhead">
+        ▲
+      </header>
+    </a>
 
-<section class="section" id="welcome-section">
-  
-    <div class="welcomedivs" id="welcomeright">
-  <h1 id="welcomeh1">TOMASZ TRĘBICKI</h1>
-    </div>
-  
-</section>
+    <a href="#Work" class="nav-link">
+      <div class="navlink">Praca</div>
+    </a>
 
-<section id="projects">
-   <div id="about">
-     <p>I am a web designer and developer with an experience in coding raw HTML5 and CSS3.</p><p> I created my first website back when I was a teenager, learning HTML from computer magazines and internet.</p><p> Currently, I am exploring JavaScript with the help of freecodecamp.org.</p><p> I also code simple apps in the C language, with the hope of extending my knowledge into Python very soon.</p>
-    </div>
-    
-  <div id="projectflex">
-  <div class="project-tile">
-    <a href="https://ttrebicki.github.io" target="_blank">
-    <img class="miniature" width="100%" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-    </a><br>
-    Website 1
-  </div>
-    <div class="project-tile">
-    <a href="https://ttrebicki.github.io" target="_blank">
-    <img class="miniature" width="100%" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+    <a href="#About" class="nav-link">
+      <div class="navlink" id="sf2">O mnie</div>
     </a>
-      <br>
-    Website 2
-  </div>
-    <div class="project-tile">
-    <a href="https://ttrebicki.github.io" target="_blank">
-    <img class="miniature" width="100%" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-    </a>
-      <br>
-    Website 3
-  </div>
-    <div class="project-tile">
-    <a href="https://ttrebicki.github.io" target="_blank">
-    <img class="miniature" width="100%" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-    </a>
-      <br>
-    Website 4
-  </div><div class="project-tile">
-    <a href="https://ttrebicki.github.io" target="_blank">
-    <img class="miniature" width="100%" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-    </a>
-    <br>
-    Website 5
-  </div>
-  </div>
- </section>
 
-<section id="contact">
-  <a id="profile-link" href="https://github.com/ttrebicki" target="_blank">MY GITHUB PAGE
-  </a>
-</section>
+    <a href="#Contact" class="nav-link">
+      <div class="navlink">Kontakt</div>
+    </a>
+
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Work">
+      <header class="main-header">
+        <span>Praca</span>
+      </header>
+      <div class="main-content">
+        <p>
+          
+            <h1>Lipiec 2018 ➝ Lipiec 2019: radicalzz.studio:<br> UX Intern/Junior UX Researcher/Designer</h1>
+          
+           radicalzz.studio to butikowe studio projektowo konsultingowe, które świadczy usługi dla firm nastawionych na wdrażanie nowych technologii i zrównoważone projektowanie.<br>
+          <a target="_blank" href="https://radicalzz.studio">(www)</a></p>
+        
+      <h2>Zrealizowane projekty:</h2>
+        
+        <ul>
+          <li class="cv" onclick="var elem = document.getElementById('sub1'); if (elem.style.display != 'block') elem.style.display='block'; else elem.style.display='none';">IKEA: Service Design</li>
+          <div class="collapsible" id="sub1">
+            <div class="cvtext">
+              Dla IKEA współprojektowałem i przeprowadziłem badanie jakościowe, które posłużyło do przygotowania nowej usługi, która w przyszłości pozwoli klientom wynajmować meble. Badanie składało się z dwóch etapów:
+              <ul>
+                <li>Wywiady IDI (określenie motywacji grupy docelowej)</li>
+                <li>Ankieta ilościowa (oparta o Typeform i model Kano)</li>
+              </ul>
+            </div>
+
+          </div>
+          <li class="cv" onclick="var elem = document.getElementById('sub2'); if (elem.style.display != 'block') elem.style.display='block'; else elem.style.display='none';">IKEA: Nawigacja - ewaluacja <br></li>
+          <div class="collapsible" id="sub2">
+            <div class="cvtext">
+              Również dla IKEA uczestniczyłem w przeprowadzaniu badania jakościowego testującego nowy projekt nawigacji w sklepie IKEA Janki.<br> Badanie opierało się na wywiadach pogłębionych, podczas których prezentowaliśmy różne propozycje
+              map kierujących klientów do poszczególnych działów.<br> Przeprowadziliśmy również ewaluację czytelności znaków graficznych reprezentujących punkty odniesienia w sklepie.
+            </div>
+          </div>
+          <li class="cv" onclick="var elem = document.getElementById('sub3'); if (elem.style.display != 'block') elem.style.display='block'; else elem.style.display='none';">Rzeczpospolita: Prenumerata - ewaluacja</li>
+          <div class="collapsible" id="sub3">
+            <div class="cvtext">
+              Dla Rzeczpospolitej przeprowadziłem badanie jakościowe sprawdzające satysfakcję klientów biznesowych z usługi prenumeraty.<br> Badanie rozwijało uprzednio przeprowadzoną przez Ruch ankietę ilościową i zostało oparte o pogłębione
+              wywiady telefoniczne. To pozwoliło zidentyfikować i lepiej opisać konkretne korzyści i pain points prenumeraty.
+            </div>
+          </div>
+          <li class="cv" onclick="var elem = document.getElementById('sub4'); if (elem.style.display != 'block') elem.style.display='block'; else elem.style.display='none';">Brain Tech: Projekt hełmu BCI - ewaluacja + ko-kreacja</li>
+          <div class="collapsible" id="sub4">
+            <div class="cvtext">
+              Dla firmy Brain Tech, produkującej interfejsy mózg-komputer (służące do kontoli cyfrowych interfejsów przy użyciu fal mózgowych), zaprojektowałem i przeprowadziłem badanie jakościowe projektu wizualnego hełmu EEG.
+            </div>
+          </div>
+          <li class="cv" onclick="var elem = document.getElementById('sub5'); if (elem.style.display != 'block') elem.style.display='block'; else elem.style.display='none';">Karty Futuro - gameplay design + zaplecze merytoryczne</li>
+          <div class="collapsible" id="sub5">
+            <div class="cvtext">
+              Współtworzyłem model rozgrywki i dostarczyłem bazę teoretyczną dla Futuro, opartego o grywalizację toolkitu, który pomaga projektować produkty przyszłości.<br>
+              <a target="_blank" href="https://futuro.cards">(www)</a><br> Premiera Futuro miała miejsce podczas The Next Web 2019 w Amsterdamie.<br> Przy użyciu HTML5 i CSS stworzyłem również prototyp planowanej wersji online produktu.<br>
+              <a target="_blank" href="https://tinyurl.com/y5mpxphb">(www)</a>
+            </div>
+          </div>
+          <li class="cv" onclick="var elem = document.getElementById('sub6'); if (elem.style.display != 'block') elem.style.display='block'; else elem.style.display='none';">radicalzz.news - design + grafika 3D</li>
+          <div class="collapsible" id="sub6">
+            <div class="cvtext">
+              Współprojektowałem i prowadziłem sekcję codziennych wiadomości (dostępnych przez Insta Stories radicalzz.studio) dotyczących nowych technologii i zrównoważonego projektowania.<br> W tym celu użyłem opartego o sztuczną inteligencję
+              narzędzia CrazyTalk, aby stworzyć wirtualnego, animowanego 3D-prezentera, który odczytuje treść wiadomości.<br> daily.news dostępne są na kanale Instagram radicalzz.studio: <a target="_blank" href="https://instagram.com/radicalzz.studio">(www)</a>
+            </div>
+          </div>
+        </ul>
+
+        </ul>
+    <h2>Niekomercyjne</h2>
+    <h3>Mockup aplikacji e-commerce dla iPhone 8 wykonany w programie Sketch. (najedź myszką)</h3>
+    <img id="mockup1" src="https://i.ibb.co/C1crf06/red-cyan.png">
+      </div>
+    </section>
+    <section class="main-section" id="About">
+      <header class="main-header">
+        <span>O mnie</span>
+      </header>
+      <div class="main-content">
+
+        <p>You may add additional external JS and CSS as needed to complete the project, however the current external resource MUST remain in place for the tests to work. BABEL must also be left in place.</p>
+        <p>Adding global style rules using the * selector, or by adding rules to body {..} or html {..}, or to all elements within body or html, i.e. h1 {..}, has the potential to pollute the test suite's CSS. Try adding: * { color: red }, for a quick example!</p>
+        <code>
+        #navhead<br>
+{<br>
+  background-color: #303030; <br>
+  font-family: sans-serif; <br>
+  font-weight: bold; <br>
+  text-align: center; <br>
+  font-size: 18px; <br>
+}</code>
+        <code>
+        #navhead<br>
+{<br>
+  background-color: #303030; <br>
+  font-family: sans-serif; <br>
+  font-weight: bold; <br>
+  text-align: center; <br>
+  font-size: 18px; <br>
+}</code>
+      </div>
+
+    </section>
+    <section class="main-section" id="Contact">
+      <header class="main-header">
+        <span>Kontakt</span>
+      </header>
+      <div class="main-content">
+        <p>You may add additional external JS and CSS as needed to complete the project, however the current external resource MUST remain in place for the tests to work. BABEL must also be left in place.</p>
+        <p>Adding global style rules using the * selector, or by adding rules to body {..} or html {..}, or to all elements within body or html, i.e. h1 {..}, has the potential to pollute the test suite's CSS. Try adding: * { color: red }, for a quick example!</p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
