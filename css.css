@@ -193,6 +193,10 @@ ul
   text-align: justify;
   font-size: 1rem;
 }
+#about-content
+{
+	font-size: 3rem;
+}
 .cv
 {
   cursor: pointer;
@@ -356,10 +360,7 @@ ul
   color: white;
   
 }
-#about-content
-{
-	font-size: 2em;
-}
+
 
 @media only screen and (max-width: 768px)
 {
