@@ -356,14 +356,12 @@ ul
 }
 #About
 {  
-  background-image: linear-gradient (black, black),
-  url("https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-9/64994875_494622894609352_6976690754739503104_n.jpg?_nc_cat=100&_nc_oc=AQlmeSU_Xzo92ynPK9YCGPwdtPryyYhqF-PhlaG8cx6V5Y9202ofh1KvA1zD8MwKooY&_nc_ht=scontent-waw1-1.xx&oh=896e5e0442e326ed7b8a959e6e2f69a5&oe=5DE06618");
-  background-blend-mode: saturation;
+  background: #FFFFFF;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100vw;
-  color: white;
+  color: #000000;
   
 }
 
