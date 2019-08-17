@@ -126,19 +126,19 @@ ul
   0%
   {
     color: white;
-      box-shadow: 0vw 0vh 0vw 0vh cyan;
+      box-shadow: 0vw 0vh 0vw 0vh red;
     }
   
   50%
   {background-color: white;
     color: black;
-    box-shadow: 5vw 0vh 10vw 55vh yellow;
+    box-shadow: 5vw 0vh 10vw 55vh white;
   }
   
   100%
   {background-color: auto;
     color: white;
-    box-shadow: 0vw 0vh 0vw 0vh violet;
+    box-shadow: 0vw 0vh 0vw 0vh black;
 
   }
 }
