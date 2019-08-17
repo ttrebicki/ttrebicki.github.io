@@ -308,12 +308,12 @@ ul
 {
 	0%
 	{
-		width: 0%;
+		width: 25%;
 	}
 	100%
 	{
-		width: auto;
-		filter: none;
+		width: 100%;
+		
 	}	
 	
 }
