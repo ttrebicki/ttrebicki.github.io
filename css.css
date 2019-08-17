@@ -299,7 +299,7 @@ ul
 }
 #mockup1:hover
 {
-	animation-name: mockupik
+	animation-name: mockupik;
 	animation-duration: 1s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
