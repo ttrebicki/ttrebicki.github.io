@@ -10,7 +10,7 @@ html
 }
 h1, h2, h3
 {
-  font-family: 'Sirin Stencil', sans-serif;
+  font-family: 'Akronim', sans-serif;
 }
 a
 {
@@ -124,7 +124,7 @@ ul
   font-size: 2em;
   padding: 1vw 5vw 1vw 5vw;
   text-transform: uppercase;
-  font-family: 'Sirin Stencil', sans-serif;
+  font-family: 'Akronim', sans-serif;
   line-height: 25vh;
   letter-spacing: 5px;
   animation-name: wjazd2;
@@ -194,7 +194,7 @@ ul
 {
   background-color: #fff;
   color: #000;
-  font-family: 'Sirin Stencil', sans-serif;
+  font-family: 'Akronim', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1em;
   font-size: 48px;
