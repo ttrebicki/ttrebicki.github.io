@@ -34,7 +34,7 @@ ul
 {
   position: fixed;
   top: 0;
-  left: -20vw;
+  left: -25vw;
   border-right: 1px dotted red;
   color: black;
   z-index: 999;
@@ -43,6 +43,10 @@ ul
   animation-name: wjazd;
   animation-duration: 60s;
   animation-iteration-count: infinite;
+}
+#navbar: hover:
+{
+	left: 0;
 }
 #navhead
 {
