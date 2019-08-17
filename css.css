@@ -310,13 +310,10 @@ ul
 	{
 		width: 25%;
 	}
-	75%
-	{
-		width: 150%;
-	}
+	
 	100%
 	{
-		width: 100%;
+		width: auto;
 		filter: none;
 		
 	}	
