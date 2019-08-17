@@ -209,7 +209,7 @@ ul
   min-height: 100vh;
   font-family: 'Lexend Mega', sans-serif;
   padding: 1vw 5vw 1vw 5vw;
-  text-align: justify;
+  text-align: left;
   font-size: 1rem;
 }
 #about-content
