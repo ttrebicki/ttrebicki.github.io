@@ -44,7 +44,7 @@ ul
   animation-duration: 60s;
   animation-iteration-count: infinite;
 }
-#navbar: hover:
+#navbar:hover
 {
 	left: 0;
 }
