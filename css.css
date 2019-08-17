@@ -102,12 +102,12 @@ ul
  
   color: black;
   text-align: center;
-  font-size: 1em;
+  font-size: 2em;
   padding: 1vw 5vw 1vw 5vw;
   text-transform: uppercase;
   font-family: sans-serif, monospace;
   line-height: 25vh;
-  letter-spacing: 1em;
+  letter-spacing: 5px;
   animation-name: wjazd2;
   animation-duration: 1s;
   animation-iteration-count: 1;
