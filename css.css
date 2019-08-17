@@ -112,7 +112,7 @@ ul
   animation-duration: 1s;
   animation-iteration-count: 1;
   cursor: crosshair;
-  opacity: 0.1;
+  opacity: 0.5;
 }
 .navlink:hover
 {
