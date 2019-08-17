@@ -46,7 +46,20 @@ ul
 }
 #navbar:hover
 {
-	left: 0;
+  animation-name: navbarwys;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+@keyframes navbarwys
+{
+	0%
+	{
+		left: -25vw;
+	}
+	100%
+	{
+		left: 0;
+	}
 }
 #navhead
 {
