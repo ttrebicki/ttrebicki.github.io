@@ -147,7 +147,7 @@ ul
   0%
   {
     color: white;
-      box-shadow: 0vw 0vh 0vw 0vh red;
+      box-shadow: 0vw 0vh 0vw 0vh #f55;
     }
   
   50%
@@ -418,11 +418,6 @@ ul
 {
   body
   {
-    width="100vw"
-  }
-  main-content
-  {
-    
-    
+    width: 100vw;
   }
 }
