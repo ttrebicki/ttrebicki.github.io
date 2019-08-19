@@ -36,7 +36,7 @@ ul
   position: fixed;
   top: 0;
   left: -25vw;
-  border-right: 1px dotted red;
+  border-right: 1px dotted #f55;
   color: black;
   z-index: 999;
   width: 30vw;
@@ -192,6 +192,7 @@ ul
   position: absolute;
   top: 0;
   left: 30vw;
+  border-left: 1px dotted #f55;
 }
 .main-header
 {
