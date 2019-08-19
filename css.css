@@ -199,7 +199,7 @@ ul
   color: #fff;
   font-family: 'Lexend Zetta', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 1em;
+  letter-spacing: 5px;
   font-size: 48px;
   text-align: left;
   line-height: 3;
@@ -227,11 +227,11 @@ ul
 }
 #about-content
 {
-	font-size: 2rem;
+	font-size: 1rem;
 }
 #contact-content
 {
-	font-size: 2rem;
+	font-size: 1rem;
 }
 .cv
 {
