@@ -115,6 +115,7 @@ ul
   {
     background-color: white;
     width: 25vw;
+    border-right: 1px dotted red;
   }
 }
 .navlink
