@@ -82,7 +82,8 @@ ul
   
   animation-name: homelink;
   animation-duration: 3s;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards; 
 }
 @keyframes homelink
 {
