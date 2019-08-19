@@ -202,10 +202,25 @@ ul
   font-size: 48px;
   text-align: left;
   line-height: 3;
-  
+  animation-name: mainheader;
+  animation-iteration-count: infinite;
+  animation-duration: 30s;
   z-index: 1500;
   padding: 1vw 5vw 1vw 5vw;
 }
+@keyframes mainheader {
+	0% {
+	background-color: #000;
+	}
+	50% {
+	background-color: #f55;
+	}
+	100% {
+	background-color: #000;
+	}
+
+}
+
 .main-content
 {
   min-height: 100vh;
