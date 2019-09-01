@@ -10,7 +10,7 @@ html
 }
 h1, h2, h3
 {
-  font-family: 'Lexend Zetta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   font-size: 1em;
 }
 a
@@ -66,7 +66,7 @@ ul
 #navhead
 {
   cursor: crosshair;
-  font-family: 'Lexend Zetta', monospace;
+  font-family: 'Helvetica', monospace;
   text-shadow: 4px 4px red;
   font-weight: bold;
   text-align: center;
@@ -127,7 +127,7 @@ ul
   font-size: 1em;
   padding: 1vw 5vw 1vw 5vw;
   text-transform: uppercase;
-  font-family: 'Lexend Zetta', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   line-height: 25vh;
   letter-spacing: 5px;
   animation-name: wjazd2;
@@ -196,9 +196,9 @@ ul
 }
 .main-header
 {
-  background-color: #f55;
-  color: #fff;
-  font-family: 'Lexend Zetta', sans-serif;
+  background-color: #fff;
+  color: #000;
+  font-family: 'Helvetica', sans-serif;
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 48px;
@@ -213,7 +213,7 @@ ul
 .main-content
 {
   min-height: 100vh;
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Helvetica', monospace;
   padding: 1vw 5vw 1vw 5vw;
   text-align: left;
   font-size: 1rem;
