@@ -10,55 +10,6 @@
     <script type="text/javascript" data-cfasync="false" src="https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/testowa_wpinka.js"></script>
     <div id="going_frame"></div>
 
-    <script>
-    (function(G, o, i, n, g) {
-        G.going =
-            G.going ||
-            function() {
-                [].push.apply((G.goingQ = G.goingQ || []), arguments);
-            };
-        G.goingSettings = { gv: '1.0.7' };
-        n = o.getElementsByTagName('head')[0];
-        g = o.createElement('script');
-        g.async = true;
-        g.src = i + '?gv=' + G.goingSettings.gv;
-        n.appendChild(g);
-    })(window, document, "https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/embed-buy-form.js");
-    going(
-        {
-            type: 'SET_PARENT',
-            payload: 'parentId',
-        },
-        {
-            type: 'SET_APP_URL',
-            payload: 'https://goingapp.pl/buying',
-        },
-        {
-            type: 'GET_EVENT_SLUG_FROM_URL',
-            payload: 'eSlug',
-        },
-        {
-            type: 'GET_RUNDATE_SLUG_FROM_URL',
-            payload: 'rSlug',
-        },
-        {
-            type: 'GET_EVENT_ID_FROM_URL',
-            payload: 'rid',
-        },
-        {
-            type: 'GET_ERROR_FROM_URL',
-            payload: 'error',
-        },
-        {
-            type: 'SET_LANGUAGE',
-            payload: 'pl',
-        },
-        {
-            type: 'LOAD_EXTERNAL_STYLE',
-            payload: 'https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/fts.css'
-        }
-    );
-</script>
 
   </body>
 </html>
