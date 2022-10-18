@@ -1,148 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wpinka</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const eventSlug = 'seats';
+        const rundateSlug = 'sierpien-2021';
 
-<link rel="stylesheet" type="text/css" href="css.css">
-<link href="https://fonts.googleapis.com/css?family=Inconsolata|Lexend+Zetta&display=swap" rel="stylesheet">
+        window.addEventListener('DOMContentLoaded', function () {
+            const iframeContainer = document.getElementById('going_frame');
+            const loadingElement = document.createElement('div');
 
+            loadingElement.innerHTML = `
+    <h2 id="loading-prompt">Trwa ładowanie formularza sprzedażowego.</h2>
+    <h3>Formularz się nie ładuje?</h3>
+    <a href="https://goingapp.pl/wydarzenie/${eventSlug}/${rundateSlug}" class="btn">Kliknij tutaj</a>
+    `;
+            loadingElement.id = 'loading-element';
+            loadingElement.style.fontFamily = 'Helvetica, sans-serif';
+            loadingElement.style.textAlign = 'center';
+            loadingElement.style.padding = '16px';
 
+            if (iframeContainer) {
+                iframeContainer.append(loadingElement);
+            }
+        });
 
-<body> <nav id="navbar"> <a href="#"> <header id="navhead"> ▲ </header>
-</a>
+        (function (G, o, i, n, g) {
+            G.going =
+                G.going ||
+                function () {
+                    [].push.apply((G.goingQ = G.goingQ || []), arguments);
+                };
+            G.goingSettings = { gv: '1.0.7' };
+            n = o.getElementsByTagName('head')[0];
+            g = o.createElement('script');
+            g.async = true;
+            g.src = i + '?gv=' + G.goingSettings.gv;
+            n.appendChild(g);
+        })(window, document, 'https://purchase.goingapp.pl/static_legacy/going/script.js');
 
-    <a href="#Work" class="nav-link"> <div class="navlink">Praca</div>
-    </a>
+        const isQueueInAddress = window.location.href.includes('queue=true')
+        const domain = 'http://localhost:3000'
 
-    <a href="#About" class="nav-link"> <div class="navlink" id="sf2">O
-    mnie</div> </a>
+        window.addEventListener('message', (event) => {
+            const data = JSON.parse(event.data);
+            if (data.queue && !isQueueInAddress) {
+                const url = new URL(window.location.href);
+                url.searchParams.append('queue', 'true');
 
-    <a href="#Contact" class="nav-link"> <div
-    class="navlink">Kontakt</div> </a>
+                window.location.assign(url.origin + url.pathname + url.search)
+            }
 
-  </nav> <main id="main-doc">
-  <section class="main-section" id="home">
-  <div class="main-content">
+            if (data) {
+                document.getElementById('loading-prompt').remove();
+                document.getElementById('going_frame').append(document.getElementById('loading-element'));
+            }
+        })
 
-  </div>
-  </section>
+        going(
+            {
+                type: 'SET_PARENT',
+                payload: 'going_frame'
+            },
+            {
+                type: 'SET_CURRENT_URL',
+                payload: window.location.href
+            },
+            {
+                type: 'GET_TRANSACTION_FROM_URL',
+                payload: 'transactionId'
+            },
+            {
+                type: 'GET_ERROR_FROM_URL',
+                payload: 'error'
+            },
+            {
+                type: 'SET_APP_URL',
+                payload: `${domain}/buying/${eventSlug}/${rundateSlug}`
+            },
+            {
+                type: 'SET_LANGUAGE',
+                payload: 'pl',
+            },
+        );
 
-
-
-
-   <section class="main-section" id="Work">
-  <header class="main-header"> <span>Praca</span> </header> <div
-  class="main-content"> <p>
-
-            <h1>Lipiec 2018 ➝ Lipiec 2019: radicalzz.studio:<br> UX
-            Intern/Junior UX Researcher/Designer</h1>
-
-           radicalzz.studio to butikowe studio projektowo konsultingowe,
-           które świadczy usługi dla firm nastawionych na wdrażanie
-           nowych technologii i zrównoważone projektowanie.<br> <a
-           target="_blank" href="https://radicalzz.studio">(www)</a></p>
-
-      <h2>Zrealizowane projekty:</h2>
-
-        <ul> <li class="cv" onclick="var elem =
-        document.getElementById('sub1'); if (elem.style.display !=
-        'block') elem.style.display='block'; else
-        elem.style.display='none';"><b>IKEA:</b> Service Design</li> <div
-        class="collapsible" id="sub1"> <div class="cvtext"> Dla IKEA
-        współprojektowałem i przeprowadziłem badanie jakościowe,
-        które posłużyło do przygotowania nowej usługi, która w
-        przyszłości pozwoli klientom wynajmować meble. Badanie
-        składało się z dwóch etapów: <ul> <li>Wywiady IDI (określenie
-        motywacji grupy docelowej)</li> <li>Ankieta ilościowa (oparta o
-        Typeform i model Kano)</li> </ul> </div>
-
-          </div> <li class="cv" onclick="var elem =
-          document.getElementById('sub2'); if (elem.style.display !=
-          'block') elem.style.display='block'; else
-          elem.style.display='none';"><b>IKEA:</b> Nawigacja - ewaluacja
-          <br></li> <div class="collapsible" id="sub2"> <div
-          class="cvtext"> Również dla IKEA uczestniczyłem w
-          przeprowadzaniu badania jakościowego testującego nowy
-          projekt nawigacji w sklepie IKEA Janki.<br> Badanie opierało
-          się na wywiadach pogłębionych, podczas których
-          prezentowaliśmy różne propozycje map kierujących klientów
-          do poszczególnych działów.<br> Przeprowadziliśmy również
-          ewaluację czytelności znaków graficznych reprezentujących
-          punkty odniesienia w sklepie. </div> </div> <li class="cv"
-          onclick="var elem = document.getElementById('sub3'); if
-          (elem.style.display != 'block') elem.style.display='block';
-          else elem.style.display='none';"><b>Rzeczpospolita:</b> Prenumerata -
-          ewaluacja</li> <div class="collapsible" id="sub3"> <div
-          class="cvtext"> Dla Rzeczpospolitej przeprowadziłem badanie
-          jakościowe sprawdzające satysfakcję klientów biznesowych z
-          usługi prenumeraty.<br> Badanie rozwijało uprzednio
-          przeprowadzoną przez Ruch ankietę ilościową i zostało
-          oparte o pogłębione wywiady telefoniczne. To pozwoliło
-          zidentyfikować i lepiej opisać konkretne korzyści i pain
-          points prenumeraty. </div> </div> <li class="cv" onclick="var
-          elem = document.getElementById('sub4'); if (elem.style.display
-          != 'block') elem.style.display='block'; else
-          elem.style.display='none';"><b>Brain Tech:</b> Projekt hełmu BCI -
-          ewaluacja + ko-kreacja</li> <div class="collapsible"
-          id="sub4"> <div class="cvtext"> Dla firmy Brain Tech,
-          produkującej interfejsy mózg-komputer (służące do kontoli
-          cyfrowych interfejsów przy użyciu fal mózgowych),
-          zaprojektowałem i przeprowadziłem badanie jakościowe projektu
-          wizualnego hełmu EEG. </div> </div> <li class="cv"
-          onclick="var elem = document.getElementById('sub5'); if
-          (elem.style.display != 'block') elem.style.display='block';
-          else elem.style.display='none';"><b>Karty Futuro:</b> gameplay
-          design + zaplecze merytoryczne</li> <div class="collapsible"
-          id="sub5"> <div class="cvtext"> Współtworzyłem model
-          rozgrywki i dostarczyłem bazę teoretyczną dla Futuro,
-          opartego o grywalizację toolkitu, który pomaga projektować
-          produkty przyszłości.<br> <a target="_blank"
-          href="https://futuro.cards">(www)</a><br> Premiera Futuro
-          miała miejsce podczas The Next Web 2019 w Amsterdamie.<br>
-          Przy użyciu HTML5 i CSS stworzyłem również prototyp
-          planowanej wersji online produktu.<br> <a target="_blank"
-          href="https://tinyurl.com/y5mpxphb">(www)</a> </div> </div>
-          <li class="cv" onclick="var elem =
-          document.getElementById('sub6'); if (elem.style.display !=
-          'block') elem.style.display='block'; else
-          elem.style.display='none';"><b>radicalzz.news:</b> design + grafika
-          3D</li> <div class="collapsible" id="sub6"> <div
-          class="cvtext"> Współprojektowałem i prowadziłem sekcję
-          codziennych wiadomości (dostępnych przez Insta Stories
-          radicalzz.studio) dotyczących nowych technologii i
-          zrównoważonego projektowania.<br> W tym celu użyłem
-          opartego o sztuczną inteligencję narzędzia CrazyTalk, aby
-          stworzyć wirtualnego, animowanego 3D-prezentera, który
-          odczytuje treść wiadomości.<br> daily.news dostępne są na
-          kanale Instagram radicalzz.studio:<br> <a target="_blank"
-          href="https://instagram.com/radicalzz.studio">(www)</a> </div>
-          </div> </ul>
-
-        </ul><h2>Niekomercyjne</h2> <ul><li class="cv">Mockup aplikacji
-        e-commerce dla iPhone 8 (Sketch)</li><li> <img id="mockup1"
-        src="https://i.imgur.com/EwHejsN.png"></li></ul> </div> </section>
-
-        <section class="main-section" id="About""> <header
-        class="main-header"> <span>O mnie</span> </header> <div
-        class="main-content" id="about-content">
-
-        Jestem absolwentem etnologii i antropologii kulturowej na Uniwersytecie Warszawskim.<br><br>
-        Swobodnie poruszam się w technologiach HTML5 i CSS3.<br>Posiadam również dobrą znajomość oprogramowania
-        do prototypowania, takiego jak Sketch, czy Axure RP. <br>Obecnie jestem w trakcie kursu JavaScript. <br><br>
-        Zawodowo (patrz powyżej) zajmuję się UX/UI Designem, badaniami UX oraz projektowaniem i implementacją
-        stron internetowych.
-        </div>
-
-    </section> <section class="main-section" id="Contact""> <header
-    class="main-header"> <span>Kontakt</span> </header>
-    <div
-    class="main-content" id="contact-content">
-    <ul>
-    <li>
-    @:<br> <a href="mailto:t.trebicki1103@gmail.com">t.trebicki1103@gmail.com</a></li>
-    <li>
-    FB:<br> <a href="https://www.facebook.com/ttrebicki">https://www.facebook.com/ttrebicki</a></li>
-    <li>LinkedIn:<br>
-    <a href="https://www.linkedin.com/in/tomasz-tr%C4%99bicki-347049174/">https://www.linkedin.com/tomasz-trebicki</a></li>
-    </ul>
-     </div> </section>
-
-  </main>
-
+        if (window.location.href.includes('transactionId')) {
+            document.getElementById('loading-element').remove()
+        }
+    </script>
+    <div id="going_frame"></div>
 </body>
+</html>
