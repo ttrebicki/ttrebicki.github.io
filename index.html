@@ -90,8 +90,8 @@
             },
         );
 
-        if (window.location.href.includes('transactionId')) {
-            document.getElementById('loading-element').remove()
+        if (window.location.href.includes('transactionId') && document.getElementById('loading-element')) {
+            document.getElementById('loading-element').remove();
         }
     </script>
     <div id="going_frame"></div>
