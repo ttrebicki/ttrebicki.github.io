@@ -109,7 +109,7 @@
             })(window, document, "https://zagrywki-script.master.k8s-betrayal.goingprd.goingapp.eu/script.js?gid=1&gv=1");
 
             const isQueueInAddress = window.location.href.includes('queue=true')
-            const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'https://c553-94-254-231-5.eu.ngrok.io'
+            const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'http://localhost:3000'
 
             window.addEventListener('message', (event) => {
                 const data = JSON.parse(event.data);
