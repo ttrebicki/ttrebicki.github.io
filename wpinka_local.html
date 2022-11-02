@@ -123,16 +123,12 @@
 
             going(
                 {
+                    type: 'SET_PARENT',
+                    payload: 'going_frame', 
+                },
+                {
                     type: 'SET_APP_URL',
                     payload:  `${domain}/buying`,
-                },
-                {
-                    type: 'GET_EVENT_SLUG_FROM_URL',
-                    payload: 'eSlug',
-                },
-                {
-                    type: 'GET_RUNDATE_SLUG_FROM_URL',
-                    payload: 'rSlug',
                 },
                 {
                     type: 'GET_EVENT_ID_FROM_URL',
@@ -146,10 +142,6 @@
                     type: 'SET_LANGUAGE',
                     payload: 'en',
                 },
-                {
-                    type: 'SET_PARENT',
-                    payload: 'going_frame', 
-                }
             );
     </script>
     <div id="going_frame"></div>
