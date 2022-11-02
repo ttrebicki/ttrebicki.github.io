@@ -123,10 +123,6 @@
 
             going(
                 {
-                    type: 'SET_PARENT',
-                    payload: 'going_frame', 
-                },
-                {
                     type: 'SET_APP_URL',
                     payload:  `${domain}/buying`,
                 },
@@ -150,6 +146,10 @@
                     type: 'SET_LANGUAGE',
                     payload: 'en',
                 },
+                {
+                    type: 'SET_PARENT',
+                    payload: 'going_frame', 
+                }
             );
     </script>
     <div id="going_frame"></div>
