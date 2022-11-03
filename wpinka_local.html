@@ -108,18 +108,18 @@
                 n.appendChild(g);
             })(window, document, "https://localhost:3000/static_legacy/script.js");
 
-            const isQueueInAddress = window.location.href.includes('queue=true')
-            const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'https://localhost:3000'
+            // const isQueueInAddress = window.location.href.includes('queue=true')
+            // const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'https://localhost:3000'
 
-            window.addEventListener('message', (event) => {
-                const data = JSON.parse(event.data);
-                if (data.queue && !isQueueInAddress) {
-                    const url = new URL(window.location.href);
-                    url.searchParams.append('queue', 'true');
+            // window.addEventListener('message', (event) => {
+            //     const data = JSON.parse(event.data);
+            //     if (data.queue && !isQueueInAddress) {
+            //         const url = new URL(window.location.href);
+            //         url.searchParams.append('queue', 'true');
 
-                    window.location.assign(url.origin + url.pathname + url.search)
-                }
-            })
+            //         window.location.assign(url.origin + url.pathname + url.search)
+            //     }
+            // })
 
             going(
                 {
@@ -140,7 +140,7 @@
                 },
                 {
                     type: 'SET_APP_URL',
-                    payload:  `${domain}/buying`,
+                    payload:  `https://localhost:3000/buying`,
                 },
                 {
                     type: 'GET_TRANSACTION_FROM_URL',
