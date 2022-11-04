@@ -106,20 +106,20 @@
                 g.async = true;
                 g.src = i + '?gv=' + G.goingSettings.gv;
                 n.appendChild(g);
-            })(window, document, "https://localhost:3000/static_legacy/script.js");
+            })(window, document, "https://goingapp.pl/static_legacy/going/script.js");
 
-            // const isQueueInAddress = window.location.href.includes('queue=true')
-            // const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'https://localhost:3000'
+            const isQueueInAddress = window.location.href.includes('queue=true')
+            const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'https://purchase.develop.k8s-jail.goingdev.goingapp.eu'
 
-            // window.addEventListener('message', (event) => {
-            //     const data = JSON.parse(event.data);
-            //     if (data.queue && !isQueueInAddress) {
-            //         const url = new URL(window.location.href);
-            //         url.searchParams.append('queue', 'true');
+            window.addEventListener('message', (event) => {
+                const data = JSON.parse(event.data);
+                if (data.queue && !isQueueInAddress) {
+                    const url = new URL(window.location.href);
+                    url.searchParams.append('queue', 'true');
 
-            //         window.location.assign(url.origin + url.pathname + url.search)
-            //     }
-            // })
+                    window.location.assign(url.origin + url.pathname + url.search)
+                }
+            })
 
             setTimeout(going(
                 {
@@ -140,7 +140,7 @@
                 },
                 {
                     type: 'SET_APP_URL',
-                    payload:  `https://localhost:3000/buying`,
+                    payload:  `${domain}/buying`,
                 },
                 {
                     type: 'GET_TRANSACTION_FROM_URL',
