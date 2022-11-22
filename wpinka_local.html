@@ -109,7 +109,7 @@
             })(window, document, "https://goingapp.pl/static_legacy/going/script.js");
 
             const isQueueInAddress = window.location.href.includes('queue=true')
-            const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'https://purchase.develop.k8s-jail.goingdev.goingapp.eu'
+            const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'http://localhost'
 
             window.addEventListener('message', (event) => {
                 const data = JSON.parse(event.data);
