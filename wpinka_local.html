@@ -21,7 +21,7 @@
     g.async = true;
     g.src = i + '?gv=' + G.goingSettings.gv;
     n.appendChild(g);
-})(window, document, 'https://goingapp-nginx.develop.k8s-jail.goingdev.goingapp.eu/static_legacy/going/script.js');
+})(window, document, 'http://localhost:3000/static_legacy/going/script.js');
 
 going(
     {
@@ -42,7 +42,7 @@ going(
     },
     {
         type: 'SET_APP_URL',
-        payload: 'https://goingapp-nginx.develop.k8s-jail.goingdev.goingapp.eu/buy-happening/jumpcity-gdansk'
+        payload: 'http://localhost:3000/kup-bilety/bryska-warszawa/kwiecien-2023'
     },
     {
         type: 'SET_LANGUAGE',
