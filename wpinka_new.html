@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script async="" src="https://zagrywki-script.master.k8s-betrayal.goingprd.goingapp.eu/script.js?gid=1&amp;gv=1?gv=1.0.7"></script>
+  <script>
+
+    (function(G, o, i, n, g) {
+      G.going =
+        G.going ||
+        function() {
+          [].push.apply((G.goingQ = G.goingQ || []), arguments);
+        };
+      G.goingSettings = { gv: '1.0.7' };
+      n = o.getElementsByTagName('head')[0];
+      g = o.createElement('script');
+      g.async = true;
+      g.src = i + '?gv=' + G.goingSettings.gv;
+      n.appendChild(g);
+    })(window, document, "https://zagrywki-script.master.k8s-betrayal.goingprd.goingapp.eu/script.js?gid=1&gv=1");
+
+    const isQueueInAddress = window.location.href.includes('queue=true')
+    const domain = isQueueInAddress ? 'https://queue.goingapp.pl' : 'http://localhost:3000'
+
+    window.addEventListener('message', (event) => {
+      const data = JSON.parse(event.data);
+      if (data.queue && !isQueueInAddress) {
+        const url = new URL(window.location.href);
+        url.searchParams.append('queue', 'true');
+
+        window.location.assign(url.origin + url.pathname + url.search)
+      }
+    })
+
+    going(
+      {
+        type: 'SET_PARENT',
+        payload: 'parentId',
+      },
+      {
+        type: 'SET_APP_URL',
+        payload:  `${domain}/buying`,
+      },
+      {
+        type: 'GET_EVENT_SLUG_FROM_URL',
+        payload: 'eSlug',
+      },
+      {
+        type: 'GET_RUNDATE_SLUG_FROM_URL',
+        payload: 'rSlug',
+      },
+      {
+        type: 'GET_EVENT_ID_FROM_URL',
+        payload: 'rid',
+      },
+      {
+        type: 'GET_ERROR_FROM_URL',
+        payload: 'error',
+      },
+      {
+        type: 'SET_CURRENT_URL',
+        payload: window.location.href
+      },
+      {
+        type: 'GET_TRANSACTION_FROM_URL',
+        payload: 'transactionId'
+      },
+      {
+        type: 'SET_LANGUAGE',
+        payload: 'pl',
+      },
+      {
+        type: 'LOAD_EXTERNAL_STYLE',
+        payload: 'https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/fts.css'
+      }
+    );
+
+  </script>
+</head>
+<body>
+<div id="parentId"></div>
+</body>
+</html>
