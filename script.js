@@ -437,6 +437,7 @@ class Going {
   getParameterFromUrl(parameterName, callback, isFramer) {
     /* TODO: finish support in other methods */
     let search = window.top.location.search.toString();
+    console.log({ search });
 
     // let search = isFramer
     //   ? window.top.location.search.toString()
