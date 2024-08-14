@@ -728,8 +728,10 @@ class Going {
      * provided in payload of the redirectParentTo action.
      **/
     this.activeSession = false;
-    if (isFramer) window.top.location.href = event.detail;
-    else document.location.href = event.detail;
+    // if (isFramer) window.top.location.href = event.detail;
+    // else document.location.href = event.detail;
+
+    window.top.location.href = event.detail;
   }
 
   scrollIframeTo(event) {
