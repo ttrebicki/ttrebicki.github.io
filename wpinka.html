@@ -1,25 +1,109 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5NNFDPC');</script>
-<!-- End Google Tag Manager -->
-    <meta charset="utf-8">
-    <title>TEST WPINEK</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Funky HTML Page</title>
+    <meta name="description" content="Our first page" />
+    <meta name="keywords" content="html tutorial template" />
+    <script>
+      window.addEventListener("message", (event) => {
+        if (typeof dataLayer === "undefined") {
+          const dataLayer = [];
+          dataLayer.push(JSON.parse(event.data));
+        } else {
+          dataLayer.push(JSON.parse(event.data));
+        }
+      });
+      const frameId = "going_frame";
+
+      const eventSlug = "a-c-e-rewind-us-europe-tour";
+      const rundateSlug = "warszawa-pazdziernik-2024";
+
+      window.addEventListener("DOMContentLoaded", function () {
+        const iframeContainer = document.getElementById(frameId);
+        const loadingElement = document.createElement("div");
+        if (document.getElementById("loading-element")) {
+          return;
+        }
+        loadingElement.innerHTML = `
+    <h2 id="loading-prompt">The sales form is loading.</h2>
+    <h3>The form doesn't work? Buy tickets at <a href="https://goingapp.pl/" rel="dofollow">Going.</a></h3>
+    `;
+        loadingElement.id = "loading-element";
+        loadingElement.style.fontFamily = "Helvetica, sans-serif";
+        loadingElement.style.textAlign = "center";
+        loadingElement.style.padding = "16px";
+        if (iframeContainer) {
+          iframeContainer.append(loadingElement);
+        }
+      });
+      (function (G, o, i, n, g) {
+        G.going =
+          G.going ||
+          function () {
+            [].push.apply((G.goingQ = G.goingQ || []), arguments);
+          };
+        G.goingSettings = { gv: "1.0.7" };
+        n = o.getElementsByTagName("head")[0];
+        g = o.createElement("script");
+        g.async = true;
+        g.src = i + "?gv=" + G.goingSettings.gv;
+        n.appendChild(g);
+      })(window, document, "https://places-script.goingapp.pl/script.js");
+      const isQueueInAddress = window.location.href.includes("queue=true");
+      const domain = isQueueInAddress
+        ? "https://queue.goingapp.pl"
+        : "http://localhost:5173";
+      window.addEventListener("message", (event) => {
+        const data = JSON.parse(event.data);
+        if (data.queue && !isQueueInAddress) {
+          const url = new URL(window.location.href);
+          url.searchParams.append("queue", "true");
+          window.location.assign(url.origin + url.pathname + url.search);
+        }
+        if (
+          data &&
+          document.getElementById("loading-prompt") &&
+          document.getElementById(frameId)
+        ) {
+          document.getElementById("loading-prompt")?.remove();
+          document
+            .getElementById(frameId)
+            .append(document.getElementById("loading-element"));
+        }
+      });
+      going(
+        {
+          type: "SET_PARENT",
+          payload: frameId,
+        },
+        {
+          type: "SET_CURRENT_URL",
+          payload: "http://localhost:5173",
+        },
+        {
+          type: "GET_TRANSACTION_FROM_URL",
+          payload: "transactionId",
+        },
+        {
+          type: "GET_ERROR_FROM_URL",
+          payload: "error",
+        },
+        {
+          type: "SET_APP_URL",
+          payload: `${domain}/buying/${eventSlug}/${rundateSlug}?language=en`,
+        },
+        {
+          type: "LOAD_EXTERNAL_STYLE",
+          payload:
+            "https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/a-c-e-rewind-us.css",
+        }
+      );
+      if (window.location.href.includes("transactionId")) {
+        document.getElementById("loading-element").remove();
+      }
+    </script>
   </head>
   <body>
-
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5NNFDPC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<!--     <a href="https://goingapp.pl/kup-bilety/hangar-goclaw">URUCHOM WPINKĘ MODALNĄ</a>
-<!--     <script src="https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/going-modal-embed/going-modal-embed-happenings-cypress-test.js" type='text/javascript'></script> --> -->
-    <script src="https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/parkmilionatest.js" type='text/javascript'></script>
     <div id="going_frame"></div>
   </body>
+</html>
