@@ -791,7 +791,14 @@ class Going {
     document.addEventListener('goingResize', this.resizeIframe.bind(this));
 
     document.addEventListener('goingBuyingRedirect', (event) => {
-      window.history.pushState(null, '', `?prevTransactionId=${event.detail}`);
+      window.top.history.pushState(
+        null,
+        '',
+        `?prevTransactionId=${event.detail}`
+      );
+
+      // if (isFramer) window.top.history.pushState(null, '', `?prevTransactionId=${event.detail}`);
+      // else window.history.pushState(null, '', `?prevTransactionId=${event.detail}`); TODO finish this
     });
 
     document.addEventListener('goingRedirect', this.redirectIframe.bind(this));
