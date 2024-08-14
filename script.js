@@ -434,8 +434,13 @@ class Going {
     this.getParameterFromUrl(parameterName, (value) => this.setEventId(value));
   }
 
-  getParameterFromUrl(parameterName, callback) {
-    let search = document.location.search.toString();
+  getParameterFromUrl(parameterName, callback, isFramer) {
+    /* TODO: finish support in other methods */
+    let search = window.top.location.search.toString();
+
+    // let search = isFramer
+    //   ? window.top.location.search.toString()
+    //   : document.location.search.toString();
 
     if (search && search.length > 1 && parameterName) {
       search = search.substr(1);
@@ -728,10 +733,8 @@ class Going {
      * provided in payload of the redirectParentTo action.
      **/
     this.activeSession = false;
-    // if (isFramer) window.top.location.href = event.detail;
-    // else document.location.href = event.detail;
-
-    window.top.location.href = event.detail;
+    if (isFramer) window.top.location.href = event.detail;
+    else document.location.href = event.detail;
   }
 
   scrollIframeTo(event) {
