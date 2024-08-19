@@ -727,7 +727,7 @@ class Going {
     }
   }
 
-  redirectIframe(event, isFramer) {
+  redirectIframe(event, isFramer = true) {
     /**
      * Note: this name is misleading, as the function
      * actually redirects the iframe's parent to a url
