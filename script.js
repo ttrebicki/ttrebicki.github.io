@@ -553,7 +553,7 @@ class Going {
     return keys
       .map((key) => {
         if (this.state[key]) {
-          return `${key}=${this.state[key]}`;
+          return `?${key}=${this.state[key]}`;
         }
 
         return null;
