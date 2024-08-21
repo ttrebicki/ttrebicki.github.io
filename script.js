@@ -889,7 +889,14 @@ class Going {
       this.sendIframeRelativeScrollPosition.bind(this)
     );
 
+    document.addEventListener(
+      'goingGetIsNestedInIframeFromUrlAndSetState',
+      this.getIsNestedInIframeFromUrlAndSetState.bind(this)
+    );
+
     window.addEventListener('scroll', this.sendIframeRelativeScrollPosition);
+
+    console.log({ state: this.state });
   }
 }
 
