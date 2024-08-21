@@ -434,14 +434,8 @@ class Going {
     this.getParameterFromUrl(parameterName, (value) => this.setEventId(value));
   }
 
-  getParameterFromUrl(parameterName, callback, isFramer) {
-    /* TODO: finish support in other methods */
+  getParameterFromUrl(parameterName, callback) {
     let search = window.top.location.search.toString();
-    console.log({ search });
-
-    // let search = isFramer
-    //   ? window.top.location.search.toString()
-    //   : document.location.search.toString();
 
     if (search && search.length > 1 && parameterName) {
       search = search.substr(1);
@@ -471,7 +465,7 @@ class Going {
         'transactionId',
         'extendedPayment',
         'token',
-        'error',
+        // 'error',
         'reservationId',
         'partnerId',
         'template',
@@ -727,15 +721,14 @@ class Going {
     }
   }
 
-  redirectIframe(event, isFramer = true) {
+  redirectIframe(event) {
     /**
-     * Note: this name is misleading, as the function
+     * Note: this name is misleading, as the method
      * actually redirects the iframe's parent to a url
      * provided in payload of the redirectParentTo action.
      **/
     this.activeSession = false;
-    if (isFramer) window.top.location.href = event.detail;
-    else document.location.href = event.detail;
+    window.top.location.href = event.detail;
   }
 
   scrollIframeTo(event) {
@@ -791,14 +784,7 @@ class Going {
     document.addEventListener('goingResize', this.resizeIframe.bind(this));
 
     document.addEventListener('goingBuyingRedirect', (event) => {
-      window.top.history.pushState(
-        null,
-        '',
-        `?prevTransactionId=${event.detail}`
-      );
-
-      // if (isFramer) window.top.history.pushState(null, '', `?prevTransactionId=${event.detail}`);
-      // else window.history.pushState(null, '', `?prevTransactionId=${event.detail}`); TODO finish this
+      window.history.pushState(null, '', `?prevTransactionId=${event.detail}`);
     });
 
     document.addEventListener('goingRedirect', this.redirectIframe.bind(this));
