@@ -550,6 +550,8 @@ class Going {
   }
 
   useValuesFromState(keys) {
+    console.log({ keys });
+
     return keys
       .map((key) => {
         if (this.state[key]) {
