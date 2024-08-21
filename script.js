@@ -498,6 +498,7 @@ class Going {
         'addBasketRedirect',
         'ticketCode',
         'transactionHash',
+        'isInNestedIFrame',
       ])
     );
   }
@@ -531,6 +532,7 @@ class Going {
           'transactionHash',
           'googleGtmKey',
           'facebookPixelKey',
+          'isInNestedIFrame',
         ])
       );
     }
