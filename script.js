@@ -31,7 +31,7 @@ class Going {
     theme: null,
     entryListUrl: null,
     formIoId: null,
-    isInNestedIFrame: null,
+    isInNestedIframe: null,
   };
 
   iframeLoaded = false;
@@ -300,9 +300,9 @@ class Going {
     });
   }
 
-  setIsInNestedIFrame(isInNestedIFrame) {
+  setIsInNestedIframe(isInNestedIframe) {
     this.setState({
-      isInNestedIFrame,
+      isInNestedIframe,
     });
   }
 
@@ -442,14 +442,8 @@ class Going {
     this.getParameterFromUrl(parameterName, (value) => this.setEventId(value));
   }
 
-  getIsNestedInIframeFromUrlAndSetState(parameterName) {
-    this.getParameterFromUrl(parameterName, (value) =>
-      this.setIsInNestedIFrame(value)
-    );
-  }
-
   getParameterFromUrl(parameterName, callback) {
-    let search = this.state.isInNestedIFrame
+    let search = this.state.isInNestedIframe
       ? window.top.location.search.toString()
       : document.location.search.toString();
 
@@ -498,7 +492,7 @@ class Going {
         'addBasketRedirect',
         'ticketCode',
         'transactionHash',
-        'isInNestedIFrame',
+        'isInNestedIframe',
       ])
     );
   }
@@ -532,7 +526,7 @@ class Going {
           'transactionHash',
           'googleGtmKey',
           'facebookPixelKey',
-          'isInNestedIFrame',
+          'isInNestedIframe',
         ])
       );
     }
@@ -753,7 +747,7 @@ class Going {
      * provided in payload of the redirectParentTo action.
      **/
     this.activeSession = false;
-    if (this.state.isInNestedIFrame) window.top.location.href = event.detail;
+    if (this.state.isInNestedIframe) window.top.location.href = event.detail;
     else document.location.href = event.detail;
   }
 
