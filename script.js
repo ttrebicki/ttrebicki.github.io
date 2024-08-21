@@ -320,6 +320,7 @@ class Going {
     this.previousState = Object.assign({}, this.state);
 
     this.updateIframe();
+    console.log({ prev: this.previousState, state: this.state });
   }
 
   /*
@@ -895,8 +896,6 @@ class Going {
     );
 
     window.addEventListener('scroll', this.sendIframeRelativeScrollPosition);
-
-    console.log({ state: this.state });
   }
 }
 
