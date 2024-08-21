@@ -31,6 +31,7 @@ class Going {
     theme: null,
     entryListUrl: null,
     formIoId: null,
+    isInNestedIFrame: null,
   };
 
   iframeLoaded = false;
@@ -299,6 +300,12 @@ class Going {
     });
   }
 
+  setIsInNestedIFrame(isInNestedIFrame) {
+    this.setState({
+      isInNestedIFrame,
+    });
+  }
+
   setState(stateFragment) {
     this.state = Object.assign(this.state, stateFragment);
 
@@ -434,8 +441,16 @@ class Going {
     this.getParameterFromUrl(parameterName, (value) => this.setEventId(value));
   }
 
+  getIsNestedInIframeFromUrlAndSetState(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) =>
+      this.setIsInNestedIFrame(value)
+    );
+  }
+
   getParameterFromUrl(parameterName, callback) {
-    let search = window.top.location.search.toString();
+    let search = this.state.isInNestedIFrame
+      ? window.top.location.search.toString()
+      : document.location.search.toString();
 
     if (search && search.length > 1 && parameterName) {
       search = search.substr(1);
@@ -735,7 +750,8 @@ class Going {
      * provided in payload of the redirectParentTo action.
      **/
     this.activeSession = false;
-    window.top.location.href = event.detail;
+    if (this.state.isInNestedIFrame) window.top.location.href = event.detail;
+    else document.location.href = event.detail;
   }
 
   scrollIframeTo(event) {
