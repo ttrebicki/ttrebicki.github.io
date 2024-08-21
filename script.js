@@ -550,12 +550,17 @@ class Going {
   }
 
   useValuesFromState(keys) {
+    let isFirst = true;
+
     return keys
       .map((key) => {
-        console.log({ key, value: this.state[key] });
-
         if (this.state[key]) {
-          return `?${key}=${this.state[key]}`;
+          if (isFirst) {
+            isFirst = false;
+            return `?${key}=${this.state[key]}`;
+          } else {
+            return `${key}=${this.state[key]}`;
+          }
         }
 
         return null;
