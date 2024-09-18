@@ -52,7 +52,7 @@
       const isQueueInAddress = window.location.href.includes("queue=true");
       const domain = isQueueInAddress
         ? "https://queue.goingapp.pl"
-        : "http://localhost:5173";
+        : "https://deploy-preview-3768--goingapp.netlify.app";
       window.addEventListener("message", (event) => {
         const data = JSON.parse(event.data);
         if (data.queue && !isQueueInAddress) {
