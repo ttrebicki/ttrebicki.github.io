@@ -1,9 +1,976 @@
-function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError("Cannot call a class as a function")}function _defineProperties(a,b){for(var c,d=0;d<b.length;d++)c=b[d],c.enumerable=c.enumerable||!1,c.configurable=!0,"value"in c&&(c.writable=!0),Object.defineProperty(a,c.key,c)}function _createClass(a,b,c){return b&&_defineProperties(a.prototype,b),c&&_defineProperties(a,c),a}function _defineProperty(a,b,c){return b in a?Object.defineProperty(a,b,{value:c,enumerable:!0,configurable:!0,writable:!0}):a[b]=c,a}var Going=/*#__PURE__*/function(){function a(){var b=this;_classCallCheck(this,a),_defineProperty(this,"key","GOING"),_defineProperty(this,"origin","*"),_defineProperty(this,"state",{data:null,carnets:null,enterFromUrl:null,parentId:null,roomId:null,token:null,transactionId:null,extendedPayment:null,reservationId:null,error:null,appUrl:null,partnerId:null,template:null,passCode:null,googleGtmKey:null,facebookPixelKey:null,eSlug:null,rSlug:null,rid:null,showBasket:!1,embedBasket:!1,addBasketRedirect:null,ticketCode:null,transactionHash:null,theme:null,entryListUrl:null,formIoId:null,isInNestedIframe:null,language:null}),_defineProperty(this,"iframeLoaded",!1),_defineProperty(this,"goingFunctionReplaced",!1),_defineProperty(this,"activeSession",!1),_defineProperty(this,"previousState",{}),_defineProperty(this,"receiveClose",function(a){if(!b.activeSession)return null;try{a.preventDefault(),a.returnValue=""}catch(a){console.error(a)}})}return _createClass(a,[{key:"run",value:function run(){this.destroy(),this.addMessageListener(),this.addListeners(),this.applyCurrentActionsFromQueue()}},{key:"destroy",value:function destroy(){document.removeEventListener("goingResize",this.resizeIframe),document.removeEventListener("goingRedirect",this.redirectIframe),document.removeEventListener("goingScrollIframeTo",this.scrollIframeTo),document.removeEventListener("goingPing",this.ping),document.removeEventListener("goingScrollToTop",this.scrollToIframeTop),document.removeEventListener("goingGetIframePosition",this.sendLoaderPositionTop),document.removeEventListener("goingGetPositionTop",this.sendPositionTop),document.removeEventListener("goingSetPositionTop",this.sendPositionTop),document.removeEventListener("goingGetCurrentUrl",this.setCurrentUrl),document.removeEventListener("goingRefreshPage",this.refreshPage),document.removeEventListener("goingRedirectEventIframe",this.redirectEventIframe),window.removeEventListener("beforeunload",this.receiveClose),window.removeEventListener("message",this.receiveMessage),document.removeEventListener("goingGetIframeRelativeScrollPosition",this.sendIframeRelativeScrollPosition),document.removeEventListener("goingGetIframeRelativeScrollPosition",this.sendIframeParentViewportHeight),window.removeEventListener("scroll",this.sendIframeRelativeScrollPosition),window.top&&window.top.removeEventListener("scroll",this.sendIframeParentViewportHeight),document.removeEventListener("goingSetSession",this.addCloseListener),document.removeEventListener("goingBlockScrollWhenDialogVisible",this.blockScrollWhenDialogVisible)}},{key:"addCloseListener",value:function addCloseListener(){window.addEventListener("beforeunload",this.receiveClose,!1)}},{key:"removeCloseListener",value:function removeCloseListener(){window.removeEventListener("beforeunload",this.receiveClose),location.reload()}},{key:"addMessageListener",value:function addMessageListener(){window.addEventListener("message",this.receiveMessage.bind(this),!1)}},{key:"receiveMessage",value:function receiveMessage(b){try{var f=JSON.parse(b.data);if(f.type===this.key){var c=f.action,d=a.snakeToCamel(this.key+"_"+c.type),e=new CustomEvent(d,{detail:c.payload});document.dispatchEvent(e)}}catch(a){}}},{key:"applyCurrentActionsFromQueue",value:function applyCurrentActionsFromQueue(){var b=this,c=window.goingQ||[];c.map(function(c){var d=c.type,e=c.payload;if(d){var f=a.snakeToCamel(d);Object.prototype.hasOwnProperty.call(a.prototype,f)&&b[f](e)}})}},{key:"setRoom",value:function setRoom(a){this.setState({roomId:a})}},{key:"setBasket",value:function setBasket(a){this.setState({showBasket:a})}},{key:"setGtmKey",value:function setGtmKey(a){this.setState({googleGtmKey:a})}},{key:"setFbPixelKey",value:function setFbPixelKey(a){this.setState({facebookPixelKey:a})}},{key:"setError",value:function setError(a){this.setState({error:a})}},{key:"setParent",value:function setParent(a){this.setState({parentId:a})}},{key:"setEmbedBasket",value:function setEmbedBasket(a){this.setState({embedBasket:a})}},{key:"setAppUrl",value:function setAppUrl(a){this.setState({appUrl:a})}},{key:"setTransaction",value:function setTransaction(a){this.setState({transactionId:a})}},{key:"setData",value:function setData(a){this.setState({data:a})}},{key:"setExtendedPayment",value:function setExtendedPayment(a){this.setState({extendedPayment:a})}},{key:"setPassCode",value:function setPassCode(a){this.setState({passCode:a})}},{key:"setTicketCode",value:function setTicketCode(a){this.setState({ticketCode:a})}},{key:"setTransactionHash",value:function setTransactionHash(a){this.setState({transactionHash:a})}},{key:"setReservation",value:function setReservation(a){this.setState({reservationId:a})}},{key:"setToken",value:function setToken(a){this.setState({token:a})}},{key:"setTemplate",value:function setTemplate(a){this.setState({template:a})}},{key:"setTheme",value:function setTheme(a){this.setState({theme:a})}},{key:"setEntryListUrl",value:function setEntryListUrl(a){this.setState({entryListUrl:a})}},{key:"setFormIoId",value:function setFormIoId(a){this.setState({formIoId:a})}},{key:"setCarnets",value:function setCarnets(a){this.setState({carnets:a})}},{key:"setPartnerId",value:function setPartnerId(a){this.setState({partnerId:a})}},{key:"setEnterFormUrl",value:function setEnterFormUrl(a){this.setState({enterFromUrl:a})}},{key:"setEventSlug",value:function setEventSlug(a){this.setState({eSlug:a})}},{key:"setRundateSlug",value:function setRundateSlug(a){this.setState({rSlug:a})}},{key:"setEventId",value:function setEventId(a){this.setState({rid:a})}},{key:"setAddBasketRedirect",value:function setAddBasketRedirect(a){this.setState({addBasketRedirect:a})}},{key:"setIsInNestedIframe",value:function setIsInNestedIframe(a){this.setState({isInNestedIframe:a})}},{key:"setAuthRundateAccess",value:function setAuthRundateAccess(a){this.setState({rundateAccess:a})}},{key:"setLanguage",value:function setLanguage(a){this.setState({language:a})}},{key:"setState",value:function setState(a){this.state=Object.assign(this.state,a),this.refresh()}},{key:"refresh",value:function refresh(){this.statesAreTheSame()||(this.previousState=Object.assign({},this.state),this.updateIframe())}/*
+class Going {
+  key = 'GOING';
+
+  origin = '*';
+
+  state = {
+    data: null,
+    carnets: null,
+    enterFromUrl: null,
+    parentId: null,
+    roomId: null,
+    token: null,
+    transactionId: null,
+    extendedPayment: null,
+    reservationId: null,
+    error: null,
+    appUrl: null,
+    partnerId: null,
+    template: null,
+    passCode: null,
+    googleGtmKey: null,
+    facebookPixelKey: null,
+    eSlug: null,
+    rSlug: null,
+    rid: null,
+    showBasket: false,
+    embedBasket: false,
+    addBasketRedirect: null,
+    ticketCode: null,
+    transactionHash: null,
+    theme: null,
+    entryListUrl: null,
+    formIoId: null,
+    isInNestedIframe: null,
+    language: null,
+  };
+
+  iframeLoaded = false;
+
+  goingFunctionReplaced = false;
+
+  activeSession = false;
+
+  previousState = {};
+
+  static snakeToCamel(str) {
+    return str.toLowerCase().replace(/([-_]\w)/g, (g) => g[1].toUpperCase());
+  }
+
+  run() {
+    this.destroy();
+    this.addMessageListener();
+    this.addListeners();
+    this.applyCurrentActionsFromQueue();
+  }
+
+  destroy() {
+    document.removeEventListener('goingResize', this.resizeIframe);
+    document.removeEventListener('goingRedirect', this.redirectIframe);
+    document.removeEventListener('goingScrollIframeTo', this.scrollIframeTo);
+    document.removeEventListener('goingPing', this.ping);
+    document.removeEventListener('goingScrollToTop', this.scrollToIframeTop);
+    document.removeEventListener(
+      'goingGetIframePosition',
+      this.sendLoaderPositionTop
+    );
+    document.removeEventListener('goingGetPositionTop', this.sendPositionTop);
+    document.removeEventListener('goingSetPositionTop', this.sendPositionTop);
+    document.removeEventListener('goingGetCurrentUrl', this.setCurrentUrl);
+    document.removeEventListener('goingRefreshPage', this.refreshPage);
+    document.removeEventListener(
+      'goingRedirectEventIframe',
+      this.redirectEventIframe
+    );
+    window.removeEventListener('beforeunload', this.receiveClose);
+    window.removeEventListener('message', this.receiveMessage);
+    document.removeEventListener(
+      'goingGetIframeRelativeScrollPosition',
+      this.sendIframeRelativeScrollPosition
+    );
+    document.removeEventListener(
+      'goingGetIframeRelativeScrollPosition',
+      this.sendIframeParentViewportHeightAndScrollPos
+    );
+    window.removeEventListener('scroll', this.sendIframeRelativeScrollPosition);
+    if (window.top)
+      window.top.removeEventListener(
+        'scroll',
+        this.sendIframeParentViewportHeightAndScrollPos
+      );
+
+    document.removeEventListener('goingSetSession', this.addCloseListener);
+
+    document.removeEventListener(
+      'goingBlockScrollWhenDialogVisible',
+      this.blockScrollWhenDialogVisible
+    );
+  }
+
+  addCloseListener() {
+    window.addEventListener('beforeunload', this.receiveClose, false);
+  }
+
+  removeCloseListener() {
+    window.removeEventListener('beforeunload', this.receiveClose);
+    location.reload();
+  }
+
+  receiveClose = (event) => {
+    if (!this.activeSession) {
+      return null;
+    }
+    try {
+      // Cancel the event as stated by the standard.
+      event.preventDefault();
+      // Chrome requires returnValue to be set.
+      event.returnValue = '';
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  addMessageListener() {
+    window.addEventListener('message', this.receiveMessage.bind(this), false);
+  }
+
+  receiveMessage(messageEvent) {
+    try {
+      const event = JSON.parse(messageEvent.data);
+
+      if (event.type === this.key) {
+        const action = event.action;
+        const actionName = Going.snakeToCamel(this.key + '_' + action.type);
+
+        const newEvent = new CustomEvent(actionName, {
+          detail: action.payload,
+        });
+
+        document.dispatchEvent(newEvent);
+      }
+    } catch (e) {}
+  }
+
+  applyCurrentActionsFromQueue() {
+    const actions = window.goingQ || [];
+
+    actions.map((action) => {
+      const { type, payload } = action;
+
+      if (type) {
+        const actionName = Going.snakeToCamel(type);
+
+        if (Object.prototype.hasOwnProperty.call(Going.prototype, actionName)) {
+          this[actionName](payload);
+        }
+      }
+    });
+  }
+
+  setRoom(roomId) {
+    this.setState({
+      roomId,
+    });
+  }
+
+  setBasket(showBasket) {
+    this.setState({
+      showBasket,
+    });
+  }
+
+  setGtmKey(googleGtmKey) {
+    this.setState({
+      googleGtmKey,
+    });
+  }
+
+  setFbPixelKey(facebookPixelKey) {
+    this.setState({
+      facebookPixelKey,
+    });
+  }
+
+  setError(error) {
+    this.setState({
+      error,
+    });
+  }
+
+  setParent(parentId) {
+    this.setState({
+      parentId,
+    });
+  }
+
+  setEmbedBasket(embedBasket) {
+    this.setState({
+      embedBasket,
+    });
+  }
+
+  setAppUrl(appUrl) {
+    this.setState({
+      appUrl,
+    });
+  }
+
+  setTransaction(transactionId) {
+    this.setState({
+      transactionId,
+    });
+  }
+
+  setData(data) {
+    this.setState({
+      data,
+    });
+  }
+
+  setExtendedPayment(extendedPayment) {
+    this.setState({
+      extendedPayment,
+    });
+  }
+
+  setPassCode(passCode) {
+    this.setState({
+      passCode,
+    });
+  }
+
+  setTicketCode(ticketCode) {
+    this.setState({ ticketCode });
+  }
+
+  setTransactionHash(transactionHash) {
+    this.setState({ transactionHash });
+  }
+
+  setReservation(reservationId) {
+    this.setState({
+      reservationId,
+    });
+  }
+
+  setToken(token) {
+    this.setState({
+      token,
+    });
+  }
+
+  setTemplate(template) {
+    this.setState({
+      template,
+    });
+  }
+
+  setTheme(theme) {
+    this.setState({
+      theme,
+    });
+  }
+
+  setEntryListUrl(entryListUrl) {
+    this.setState({
+      entryListUrl,
+    });
+  }
+
+  setFormIoId(formIoId) {
+    this.setState({
+      formIoId,
+    });
+  }
+
+  setCarnets(carnets) {
+    this.setState({
+      carnets,
+    });
+  }
+
+  setPartnerId(partnerId) {
+    this.setState({
+      partnerId,
+    });
+  }
+
+  setEnterFormUrl(enterFromUrl) {
+    this.setState({
+      enterFromUrl,
+    });
+  }
+
+  setEventSlug(eSlug) {
+    this.setState({
+      eSlug,
+    });
+  }
+
+  setRundateSlug(rSlug) {
+    this.setState({
+      rSlug,
+    });
+  }
+
+  setEventId(rid) {
+    this.setState({
+      rid,
+    });
+  }
+
+  setAddBasketRedirect(addBasketRedirect) {
+    this.setState({
+      addBasketRedirect,
+    });
+  }
+
+  setIsInNestedIframe(isInNestedIframe) {
+    this.setState({
+      isInNestedIframe,
+    });
+  }
+
+  setAuthRundateAccess(rundateAccess) {
+    this.setState({
+      rundateAccess,
+    });
+  }
+
+  setLanguage(language) {
+    this.setState({
+      language,
+    });
+  }
+
+  setState(stateFragment) {
+    this.state = Object.assign(this.state, stateFragment);
+
+    this.refresh();
+  }
+
+  refresh() {
+    if (this.statesAreTheSame()) {
+      return;
+    }
+
+    this.previousState = Object.assign({}, this.state);
+
+    this.updateIframe();
+  }
+
+  /*
    * This is simple check if objects are the same.
-   */},{key:"statesAreTheSame",value:function statesAreTheSame(){var a=this,b=Object.keys(this.state),c=Object.keys(this.previousState);// keys length are the same
-if(b.length!==c.length)return!1;// keys are the same
-var d=b.reduce(function(a,b){return a&&-1<c.indexOf(b)},!0);if(!d)return!1;// values are the same
-var e=b.reduce(function(b,c){return b&&a.state[c]===a.previousState[c]},!0);return e}},{key:"newReloadIframe",value:function newReloadIframe(){this.iterator=0,this.goingFunctionReplaced=!1}},{key:"updateIframe",value:function updateIframe(){if(this.iframeLoaded)return this.state.eSlug&&this.state.rSlug||this.state.rid?void(this.iframe.src=this.prepareEventUrlForIframe()):void(this.iframe.src=this.prepareUrlForIframe());if(this.state.parentId){this.iframeLoaded=!0;var a=document.getElementById(this.state.parentId);this.iframe=document.createElement("iframe"),this.iframe.src=this.prepareUrlForIframe(),this.addPropsToIframe(),a.appendChild(this.iframe)}}},{key:"getTransactionFromUrl",value:function getTransactionFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setTransaction(a)})}},{key:"getDataFromUrl",value:function getDataFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setData(a)})}},{key:"getExtendedPaymentFromUrl",value:function getExtendedPaymentFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setExtendedPayment(a)})}},{key:"getReservationFromUrl",value:function getReservationFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setReservation(a)})}},{key:"getPassCodeFromUrl",value:function getPassCodeFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setPassCode(a)})}},{key:"getTicketCodeFromUrl",value:function getTicketCodeFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setTicketCode(a)})}},{key:"getTransactionHashFromUrl",value:function getTransactionHashFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setTransactionHash(a)})}},{key:"getErrorFromUrl",value:function getErrorFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setError(a)})}},{key:"getEventSlugFromUrl",value:function getEventSlugFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setEventSlug(a)})}},{key:"getRundateSlugFromUrl",value:function getRundateSlugFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setRundateSlug(a)})}},{key:"getEventIdFromUrl",value:function getEventIdFromUrl(a){var b=this;this.getParameterFromUrl(a,function(a){return b.setEventId(a)})}},{key:"getParameterFromUrl",value:function getParameterFromUrl(a,b){var c=this.state.isInNestedIframe?window.top.location.search.toString():document.location.search.toString();if(c&&1<c.length&&a)c=c.substr(1);else return;for(var d,e=c.split("&"),f=new RegExp("^"+a+"=([a-z0-9-]+)$","i"),g=0;g<e.length;g++)if(d=e[g].match(f),d)return b(d[1])}},{key:"prepareUrlForIframe",value:function prepareUrlForIframe(){return this.state.appUrl+this.useValuesFromState(["data","roomId","transactionId","extendedPayment","token","error","reservationId","partnerId","template","theme","entryListUrl","formIoId","carnets","enterFromUrl","passCode","googleGtmKey","facebookPixelKey","showBasket","embedBasket","addBasketRedirect","ticketCode","transactionHash","isInNestedIframe","language"])}},{key:"prepareEventUrlForIframe",value:function prepareEventUrlForIframe(){return this.state.eSlug&&this.state.rSlug?this.state.appUrl+"/"+this.state.eSlug+"/"+this.state.rSlug+"?"+this.useValuesFromState(["data","roomId","transactionId","extendedPayment","token","error","reservationId","partnerId","template","theme","entryListUrl","formIoId","carnets","enterFromUrl","passCode","ticketCode","transactionHash","googleGtmKey","facebookPixelKey","isInNestedIframe","language"]):this.state.rid?this.state.appUrl+"-id/"+this.state.rid+"?"+this.useValuesFromState(["data","roomId","transactionId","extendedPayment","token","error","reservationId","partnerId","template","theme","entryListUrl","formIoId","carnets","enterFromUrl","passCode","googleGtmKey","facebookPixelKey","ticketCode","transactionHash"]):void 0}},{key:"useValuesFromState",value:function useValuesFromState(a){var b=this,c=!0;return a.map(function(a){return b.state[a]?c?(c=!1,"?".concat(a,"=").concat(b.state[a])):"".concat(a,"=").concat(b.state[a]):null}).filter(Boolean).join("&")}},{key:"addPropsToIframe",value:function addPropsToIframe(){this.iframe&&(this.iframe.style.border="none",this.iframe.style.width="100%",this.iframe.style.height=0,this.iframe.scrolling="no",this.iframe.overflow="hidden")}},{key:"sendMessageToChild",value:function sendMessageToChild(a){this.iframe&&this.iframe.contentWindow&&this.iframe.contentWindow.postMessage(JSON.stringify({type:"GOING",action:a}),this.origin)}},{key:"ping",value:function ping(){var a=this,b=window.goingQ||[];1>b.length?this.pong():(this.iterator=0,setTimeout(function(){a.sendNextAction()},0))}},{key:"pong",value:function pong(){window.goingQ=[],this.sendMessageToChild({type:"PONG"})}},{key:"setCurrentUrl",value:function setCurrentUrl(){this.sendMessageToChild({type:"SET_CURRENT_URL",payload:{href:window.location.href,search:window.location.search}})}},{key:"sendNextAction",value:function sendNextAction(){var a=this;this.iterator<window.goingQ.length?(this.sendMessageToChild(window.goingQ[this.iterator]),this.iterator++,setTimeout(function(){a.sendNextAction()},0)):!this.goingFunctionReplaced&&(this.pong(),this.replaceGoingWithInteractiveFunction())}},{key:"sendIframeParentViewportHeightAndScrollPos",value:function sendIframeParentViewportHeightAndScrollPos(){try{var a=void 0===window.top.scrollY?window.top.pageYOffset||window.top.document.documentElement.scrollTop:window.top.scrollY,b={viewportHeight:window.top.innerHeight,scrollPosY:a};this.sendMessageToChild({type:"SEND_IFRAME_PARENT_VIEWPORT_HEIGHT_AND_SCROLL_POS",payload:b})}catch(a){console.error("Unable to access parent scroll position or viewport height:",a)}}},{key:"sendIframeRelativeScrollPosition",value:function sendIframeRelativeScrollPosition(){// TODO: change name to sendModalPosition in all places when there's space
-if(this.iframe){var a=this.iframe.offsetTop,b=window.scrollY,c=window.innerHeight/2;this.sendMessageToChild({type:"SEND_IFRAME_RELATIVE_SCROLL_POSITION",payload:b-a+c})}}},{key:"blockScrollWhenDialogVisible",value:function blockScrollWhenDialogVisible(a){var b=window.top.document.documentElement;b.style.overflow=!0===a||"true"===a?"hidden":""}},{key:"sendLoaderPositionTop",value:function sendLoaderPositionTop(){var a=this.iframe.offsetHeight,b=this.iframe.offsetTop,c=window.screen.height/2,d=window.pageYOffset,e=d+c,f=200,g=f/2,h=e-b-g;e<b+g?h=0:e>a+b-f&&(h=a-f),this.sendMessageToChild({type:"LOADER_POSITION_TOP",payload:h})}},{key:"scrollToIframeTop",value:function scrollToIframeTop(){if(this.iframe){var a=this.iframe.offsetTop;window.scrollTo(0,a)}}},{key:"sendPositionTop",value:function sendPositionTop(){var a=window.pageYOffset;this.sendMessageToChild({type:"POSITION_TOP",payload:a}),this.scrollToIframeTop()}},{key:"setBasketData",value:function setBasketData(a){window.localStorage.setItem("GOING_BASKET_ITEMS",a)}},{key:"replaceGoingWithInteractiveFunction",value:function replaceGoingWithInteractiveFunction(){var a=arguments,b=this;this.goingFunctionReplaced=!0,window.going=function(){[].push.apply(window.goingQ,a),b.iterator=0,b.sendNextAction()}}},{key:"resizeIframe",value:function resizeIframe(a){this.iframe&&(this.iframe.style.height=a.detail)}},{key:"redirectIframe",value:function redirectIframe(a){this.activeSession=!1,this.state.isInNestedIframe?window.top.location.href=a.detail:document.location.href=a.detail}},{key:"scrollIframeTo",value:function scrollIframeTo(a){function b(a){for(var b=0,c=0;null!=a&&"html"!=(a.tagName||"").toLowerCase();)b+=a.offsetLeft||0,c+=a.offsetTop||0,a=a.parentElement;return{x:parseInt(b,10),y:parseInt(c,10)}}if(this.iframe){var c=this.iframe.offsetTop;a.detail&&this.iframe.offsetTop?window.scrollTo(0,c+ +a.detail):this.iframe.getBoundingClientRect()&&this.iframe.getBoundingClientRect().top&&window.scrollTo(0,b(this.iframe).y+ +a.detail)}}},{key:"setPositionTop",value:function setPositionTop(a){a.detail&&0!==a.detail?window.scrollTo(0,a.detail):this.scrollToIframeTop()}},{key:"refreshPage",value:function refreshPage(){this.activeSession=!1,this.removeCloseListener()}},{key:"redirectEventIframe",value:function redirectEventIframe(a){var b=JSON.parse(a.detail);this.setEventSlug(b.eventSlug),this.setRundateSlug(b.rundateSlug),this.updateIframe()}},{key:"addListeners",value:function addListeners(){var a=this;document.addEventListener("goingResize",this.resizeIframe.bind(this)),document.addEventListener("goingBuyingRedirect",function(a){window.history.pushState(null,"","?prevTransactionId=".concat(a.detail))}),document.addEventListener("goingRedirect",this.redirectIframe.bind(this)),document.addEventListener("goingFbq",function(b){if(b.detail&&window.fbq){var c=JSON.parse(b.detail);if(c&&c.action&&c.payload)if("Purchase"!==c.payload)window.fbq(c.action,c.payload);else if(a.state.transactionId){var d=localStorage.transactionId;d!==a.state.transactionId&&(localStorage.transactionId=a.state.transactionId,c.extraData?window.fbq(c.action,c.payload,c.extraData):window.fbq(c.action,c.payload))}}}),document.addEventListener("goingScrollIframeTo",this.scrollIframeTo.bind(this)),document.addEventListener("goingPing",this.ping.bind(this)),document.addEventListener("goingScrollToTop",this.scrollToIframeTop.bind(this)),document.addEventListener("goingGetIframePosition",this.sendLoaderPositionTop.bind(this)),document.addEventListener("goingGetPositionTop",this.sendPositionTop.bind(this)),document.addEventListener("goingSetBasketData",function(b){a.setBasketData(b.detail)}),document.addEventListener("goingSetPositionTop",this.sendPositionTop.bind(this)),document.addEventListener("goingGetCurrentUrl",this.setCurrentUrl.bind(this)),document.addEventListener("goingRefreshPage",this.refreshPage.bind(this)),document.addEventListener("goingSetSession",function(){// this.activeSession = true;
-// this.addCloseListener();
-}),document.addEventListener("goingRedirectEventIframe",this.redirectEventIframe.bind(this)),document.addEventListener("goingGetIframeRelativeScrollPosition",this.sendIframeRelativeScrollPosition.bind(this)),document.addEventListener("goingGetNestedIframeLayoutData",this.sendIframeParentViewportHeight.bind(this)),document.addEventListener("goingBlockScrollWhenDialogVisible",function(b){return a.blockScrollWhenDialogVisible(b.detail)}),window.addEventListener("scroll",this.sendIframeRelativeScrollPosition),window.top&&window.top.addEventListener("scroll",this.sendIframeParentViewportHeight.bind(this))}}],[{key:"snakeToCamel",value:function snakeToCamel(a){return a.toLowerCase().replace(/([-_]\w)/g,function(a){return a[1].toUpperCase()})}}]),a}();window.GoingVersion="1.0.30",window.GoingService=window.GoingService||new Going,window.GoingService.run();
+   */
+  statesAreTheSame() {
+    const keysOfCurrentState = Object.keys(this.state);
+    const keysOfPreviousState = Object.keys(this.previousState);
+
+    // keys length are the same
+    if (keysOfCurrentState.length !== keysOfPreviousState.length) {
+      return false;
+    }
+
+    // keys are the same
+    const keysAreTheSame = keysOfCurrentState.reduce((result, key) => {
+      return result && keysOfPreviousState.indexOf(key) > -1;
+    }, true);
+
+    if (!keysAreTheSame) {
+      return false;
+    }
+
+    // values are the same
+    const valuesAreTheSame = keysOfCurrentState.reduce((result, key) => {
+      return result && this.state[key] === this.previousState[key];
+    }, true);
+
+    return valuesAreTheSame;
+  }
+
+  newReloadIframe() {
+    this.iterator = 0;
+    this.goingFunctionReplaced = false;
+  }
+
+  updateIframe() {
+    if (this.iframeLoaded) {
+      if ((this.state.eSlug && this.state.rSlug) || this.state.rid) {
+        this.iframe.src = this.prepareEventUrlForIframe();
+
+        return;
+      }
+
+      this.iframe.src = this.prepareUrlForIframe();
+
+      return;
+    }
+
+    if (this.state.parentId) {
+      this.iframeLoaded = true;
+
+      const parent = document.getElementById(this.state.parentId);
+
+      this.iframe = document.createElement('iframe');
+      this.iframe.src = this.prepareUrlForIframe();
+
+      this.addPropsToIframe();
+
+      parent.appendChild(this.iframe);
+    }
+  }
+
+  getTransactionFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) =>
+      this.setTransaction(value)
+    );
+  }
+
+  getDataFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) => this.setData(value));
+  }
+
+  getExtendedPaymentFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) =>
+      this.setExtendedPayment(value)
+    );
+  }
+
+  getReservationFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) =>
+      this.setReservation(value)
+    );
+  }
+
+  getPassCodeFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) => this.setPassCode(value));
+  }
+
+  getTicketCodeFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) =>
+      this.setTicketCode(value)
+    );
+  }
+
+  getTransactionHashFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) =>
+      this.setTransactionHash(value)
+    );
+  }
+
+  getErrorFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) => this.setError(value));
+  }
+
+  getEventSlugFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) =>
+      this.setEventSlug(value)
+    );
+  }
+
+  getRundateSlugFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) =>
+      this.setRundateSlug(value)
+    );
+  }
+
+  getEventIdFromUrl(parameterName) {
+    this.getParameterFromUrl(parameterName, (value) => this.setEventId(value));
+  }
+
+  getParameterFromUrl(parameterName, callback) {
+    let search = this.state.isInNestedIframe
+      ? window.top.location.search.toString()
+      : document.location.search.toString();
+
+    if (search && search.length > 1 && parameterName) {
+      search = search.substr(1);
+    } else {
+      return;
+    }
+
+    const parts = search.split('&');
+
+    const regexp = new RegExp('^' + parameterName + '=([a-z0-9-]+)$', 'i');
+
+    for (let i = 0; i < parts.length; i++) {
+      const matches = parts[i].match(regexp);
+
+      if (matches) {
+        return callback(matches[1]);
+      }
+    }
+  }
+
+  prepareUrlForIframe() {
+    return (
+      this.state.appUrl +
+      this.useValuesFromState([
+        'data',
+        'roomId',
+        'transactionId',
+        'extendedPayment',
+        'token',
+        'error',
+        'reservationId',
+        'partnerId',
+        'template',
+        'theme',
+        'entryListUrl',
+        'formIoId',
+        'carnets',
+        'enterFromUrl',
+        'passCode',
+        'googleGtmKey',
+        'facebookPixelKey',
+        'showBasket',
+        'embedBasket',
+        'addBasketRedirect',
+        'ticketCode',
+        'transactionHash',
+        'isInNestedIframe',
+        'language',
+      ])
+    );
+  }
+
+  prepareEventUrlForIframe() {
+    if (this.state.eSlug && this.state.rSlug) {
+      return (
+        this.state.appUrl +
+        '/' +
+        this.state.eSlug +
+        '/' +
+        this.state.rSlug +
+        '?' +
+        this.useValuesFromState([
+          'data',
+          'roomId',
+          'transactionId',
+          'extendedPayment',
+          'token',
+          'error',
+          'reservationId',
+          'partnerId',
+          'template',
+          'theme',
+          'entryListUrl',
+          'formIoId',
+          'carnets',
+          'enterFromUrl',
+          'passCode',
+          'ticketCode',
+          'transactionHash',
+          'googleGtmKey',
+          'facebookPixelKey',
+          'isInNestedIframe',
+          'language',
+        ])
+      );
+    }
+    if (this.state.rid) {
+      return (
+        this.state.appUrl +
+        '-id/' +
+        this.state.rid +
+        '?' +
+        this.useValuesFromState([
+          'data',
+          'roomId',
+          'transactionId',
+          'extendedPayment',
+          'token',
+          'error',
+          'reservationId',
+          'partnerId',
+          'template',
+          'theme',
+          'entryListUrl',
+          'formIoId',
+          'carnets',
+          'enterFromUrl',
+          'passCode',
+          'googleGtmKey',
+          'facebookPixelKey',
+          'ticketCode',
+          'transactionHash',
+        ])
+      );
+    }
+  }
+
+  useValuesFromState(keys) {
+    let isFirst = true;
+
+    return keys
+      .map((key) => {
+        if (this.state[key]) {
+          if (isFirst) {
+            isFirst = false;
+            return `?${key}=${this.state[key]}`;
+          } else {
+            return `${key}=${this.state[key]}`;
+          }
+        }
+
+        return null;
+      })
+      .filter(Boolean)
+      .join('&');
+  }
+
+  addPropsToIframe() {
+    if (this.iframe) {
+      this.iframe.style.border = 'none';
+      this.iframe.style.width = '100%';
+      this.iframe.style.height = 0;
+      this.iframe.scrolling = 'no';
+      this.iframe.overflow = 'hidden';
+      // this.iframe.sandbox = 'allow-same-origin allow-scripts allow-forms';
+    }
+  }
+
+  sendMessageToChild(action) {
+    if (this.iframe && this.iframe.contentWindow) {
+      this.iframe.contentWindow.postMessage(
+        JSON.stringify({
+          type: 'GOING',
+          action,
+        }),
+        this.origin
+      );
+    }
+  }
+
+  ping() {
+    const actions = window.goingQ || [];
+
+    if (actions.length < 1) {
+      this.pong();
+    } else {
+      this.iterator = 0;
+
+      setTimeout(() => {
+        this.sendNextAction();
+      }, 0);
+    }
+  }
+
+  pong() {
+    window.goingQ = [];
+
+    this.sendMessageToChild({
+      type: 'PONG',
+    });
+  }
+
+  setCurrentUrl() {
+    this.sendMessageToChild({
+      type: 'SET_CURRENT_URL',
+      payload: {
+        href: window.location.href,
+        search: window.location.search,
+      },
+    });
+  }
+
+  sendNextAction() {
+    if (this.iterator < window.goingQ.length) {
+      this.sendMessageToChild(window.goingQ[this.iterator]);
+
+      this.iterator++;
+
+      setTimeout(() => {
+        this.sendNextAction();
+      }, 0);
+    } else {
+      if (!this.goingFunctionReplaced) {
+        this.pong();
+
+        this.replaceGoingWithInteractiveFunction();
+      }
+    }
+  }
+
+  sendIframeParentViewportHeightAndScrollPos() {
+    try {
+      const scrollPosY =
+        window.top.scrollY !== undefined
+          ? window.top.scrollY
+          : window.top.pageYOffset ||
+            window.top.document.documentElement.scrollTop;
+
+      const payload = {
+        viewportHeight: window.top.innerHeight,
+        scrollPosY,
+      };
+
+      this.sendMessageToChild({
+        type: 'SEND_IFRAME_PARENT_VIEWPORT_HEIGHT_AND_SCROLL_POS',
+        payload,
+      });
+    } catch (error) {
+      console.error(
+        'Unable to access parent scroll position or viewport height:',
+        error
+      );
+    }
+  }
+
+  sendIframeRelativeScrollPosition() {
+    // TODO: change name to sendModalPosition in all places when there's space
+    if (this.iframe) {
+      const iframeTopOffset = this.iframe.offsetTop;
+      const scrollFromTop = window.scrollY;
+      const halfOfViewport = window.innerHeight / 2;
+
+      const payload = scrollFromTop - iframeTopOffset + halfOfViewport;
+
+      this.sendMessageToChild({
+        type: 'SEND_IFRAME_RELATIVE_SCROLL_POSITION',
+        payload,
+      });
+    }
+  }
+
+  blockScrollWhenDialogVisible(isVisible) {
+    const html = window.top.document.documentElement;
+
+    const visible = isVisible === true || isVisible === 'true';
+
+    if (visible) {
+      html.style.overflow = 'hidden';
+    } else {
+      html.style.overflow = '';
+    }
+  }
+
+  sendLoaderPositionTop() {
+    const iframeHeight = this.iframe.offsetHeight;
+    const positionTopIframe = this.iframe.offsetTop;
+    const positionBottomIframe = iframeHeight + positionTopIframe;
+    const screenCenter = window.screen.height / 2;
+    const scrollTopPosition = window.pageYOffset;
+    const middleScrollPosition = scrollTopPosition + screenCenter;
+
+    const loaderHeight = 200;
+    const loaderHalfHeight = loaderHeight / 2;
+
+    const isScrollOverIframe =
+      middleScrollPosition < positionTopIframe + loaderHalfHeight;
+    const isScrollUnderIframe =
+      middleScrollPosition > positionBottomIframe - loaderHeight;
+
+    let loaderPosition =
+      middleScrollPosition - positionTopIframe - loaderHalfHeight;
+
+    if (isScrollOverIframe) {
+      loaderPosition = 0;
+    } else if (isScrollUnderIframe) {
+      loaderPosition = iframeHeight - loaderHeight;
+    }
+
+    this.sendMessageToChild({
+      type: 'LOADER_POSITION_TOP',
+      payload: loaderPosition,
+    });
+  }
+
+  scrollToIframeTop() {
+    if (this.iframe) {
+      const positionTopIframe = this.iframe.offsetTop;
+      window.scrollTo(0, positionTopIframe);
+    }
+  }
+
+  sendPositionTop() {
+    const scrollTopPosition = window.pageYOffset;
+    this.sendMessageToChild({
+      type: 'POSITION_TOP',
+      payload: scrollTopPosition,
+    });
+
+    this.scrollToIframeTop();
+  }
+
+  setBasketData(payload) {
+    window.localStorage.setItem('GOING_BASKET_ITEMS', payload);
+  }
+
+  replaceGoingWithInteractiveFunction() {
+    this.goingFunctionReplaced = true;
+
+    window.going = () => {
+      [].push.apply(window.goingQ, arguments);
+
+      this.iterator = 0;
+
+      this.sendNextAction();
+    };
+  }
+
+  resizeIframe(event) {
+    if (this.iframe) {
+      this.iframe.style.height = event.detail;
+    }
+  }
+
+  redirectIframe(event) {
+    /**
+     * Note: this name is misleading, as the method
+     * actually redirects the iframe's parent to a url
+     * provided in payload of the redirectParentTo action.
+     **/
+    this.activeSession = false;
+    if (this.state.isInNestedIframe) window.top.location.href = event.detail;
+    else document.location.href = event.detail;
+  }
+
+  scrollIframeTo(event) {
+    function getPosition(el) {
+      var x = 0,
+        y = 0;
+
+      while (el != null && (el.tagName || '').toLowerCase() != 'html') {
+        x += el.offsetLeft || 0;
+        y += el.offsetTop || 0;
+        el = el.parentElement;
+      }
+      return { x: parseInt(x, 10), y: parseInt(y, 10) };
+    }
+
+    if (this.iframe) {
+      const positionTopIframe = this.iframe.offsetTop;
+
+      if (event.detail && this.iframe.offsetTop) {
+        window.scrollTo(0, positionTopIframe + Number(event.detail));
+      } else if (
+        this.iframe.getBoundingClientRect() &&
+        this.iframe.getBoundingClientRect().top
+      ) {
+        window.scrollTo(0, getPosition(this.iframe).y + Number(event.detail));
+      }
+    }
+  }
+
+  setPositionTop(event) {
+    if (!event.detail || event.detail === 0) {
+      this.scrollToIframeTop();
+    } else {
+      window.scrollTo(0, event.detail);
+    }
+  }
+
+  refreshPage() {
+    this.activeSession = false;
+    this.removeCloseListener();
+  }
+
+  redirectEventIframe(event) {
+    const params = JSON.parse(event.detail);
+
+    this.setEventSlug(params.eventSlug);
+    this.setRundateSlug(params.rundateSlug);
+
+    this.updateIframe();
+  }
+
+  addListeners() {
+    document.addEventListener('goingResize', this.resizeIframe.bind(this));
+
+    document.addEventListener('goingBuyingRedirect', (event) => {
+      window.history.pushState(null, '', `?prevTransactionId=${event.detail}`);
+    });
+
+    document.addEventListener('goingRedirect', this.redirectIframe.bind(this));
+
+    document.addEventListener('goingFbq', (event) => {
+      if (event.detail && window.fbq) {
+        const data = JSON.parse(event.detail);
+
+        if (data && data.action && data.payload) {
+          if (data.payload === 'Purchase') {
+            if (this.state.transactionId) {
+              const storageTransaction = localStorage.transactionId;
+
+              if (storageTransaction !== this.state.transactionId) {
+                localStorage.transactionId = this.state.transactionId;
+                if (data.extraData) {
+                  window.fbq(data.action, data.payload, data.extraData);
+                } else {
+                  window.fbq(data.action, data.payload);
+                }
+              }
+            }
+          } else {
+            window.fbq(data.action, data.payload);
+          }
+        }
+      }
+    });
+
+    document.addEventListener(
+      'goingScrollIframeTo',
+      this.scrollIframeTo.bind(this)
+    );
+
+    document.addEventListener('goingPing', this.ping.bind(this));
+
+    document.addEventListener(
+      'goingScrollToTop',
+      this.scrollToIframeTop.bind(this)
+    );
+
+    document.addEventListener(
+      'goingGetIframePosition',
+      this.sendLoaderPositionTop.bind(this)
+    );
+
+    document.addEventListener(
+      'goingGetPositionTop',
+      this.sendPositionTop.bind(this)
+    );
+
+    document.addEventListener('goingSetBasketData', (event) => {
+      this.setBasketData(event.detail);
+    });
+
+    document.addEventListener(
+      'goingSetPositionTop',
+      this.sendPositionTop.bind(this)
+    );
+
+    document.addEventListener(
+      'goingGetCurrentUrl',
+      this.setCurrentUrl.bind(this)
+    );
+
+    document.addEventListener('goingRefreshPage', this.refreshPage.bind(this));
+
+    document.addEventListener('goingSetSession', () => {
+      // this.activeSession = true;
+      // this.addCloseListener();
+    });
+    document.addEventListener(
+      'goingRedirectEventIframe',
+      this.redirectEventIframe.bind(this)
+    );
+
+    document.addEventListener(
+      'goingGetIframeRelativeScrollPosition',
+      this.sendIframeRelativeScrollPosition.bind(this)
+    );
+
+    document.addEventListener(
+      'goingGetNestedIframeLayoutData',
+      this.sendIframeParentViewportHeightAndScrollPos.bind(this)
+    );
+
+    document.addEventListener('goingBlockScrollWhenDialogVisible', (event) =>
+      this.blockScrollWhenDialogVisible(event.detail)
+    );
+
+    window.addEventListener('scroll', this.sendIframeRelativeScrollPosition);
+
+    if (window.top) {
+      window.top.addEventListener(
+        'scroll',
+        this.sendIframeParentViewportHeightAndScrollPos.bind(this)
+      );
+    }
+  }
+}
+
+window.GoingVersion = '1.0.30';
+window.GoingService = window.GoingService || new Going();
+window.GoingService.run();
