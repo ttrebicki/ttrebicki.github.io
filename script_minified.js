@@ -898,11 +898,12 @@ class Going {
   }
 
   setPositionTop(event) {
-    if (!event.detail || event.detail === 0) {
-      this.scrollToIframeTop();
-    } else {
-      window.scrollTo(0, event.detail);
-    }
+    console.log('setPositionTop');
+    // if (!event.detail || event.detail === 0) {
+    //   this.scrollToIframeTop();
+    // } else {
+    //   window.scrollTo(0, event.detail);
+    // }
   }
 
   refreshPage() {
