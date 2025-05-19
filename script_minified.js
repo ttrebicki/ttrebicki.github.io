@@ -781,14 +781,7 @@ class Going {
 
       if (lastScrollPosY) {
         console.log('dzieje się?', lastScrollPosY);
-        setTimeout(
-          () =>
-            window.top.scrollTo({ top: lastScrollPosY, behavior: 'smooth' }),
-          3500
-        );
-        setTimeout(() =>
-          window.scrollTo({ top: lastScrollPosY, behavior: 'smooth' }, 3500)
-        );
+        window.top.scrollTo({ top: lastScrollPosY });
         console.log('czy nie?');
       }
       this.setLastScrollPos(null);
