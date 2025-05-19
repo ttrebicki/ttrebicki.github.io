@@ -33,6 +33,9 @@ class Going {
     formIoId: null,
     isInNestedIframe: null,
     language: null,
+  };
+
+  auxiliaryState = {
     lastScrollPosY: null,
     wasOpen: false,
   };
@@ -341,14 +344,20 @@ class Going {
     this.refresh();
   }
 
+  /** These setters do not use setState so they don't refresh the iframe */
+
+  setAuxiliaryState(stateFragment) {
+    this.auxiliaryState = Object.assign(this.auxiliaryState, stateFragment);
+  }
+
   setLastScrollPos(lastScrollPosY) {
-    this.setState({
+    this.setAuxiliaryState({
       lastScrollPosY,
     });
   }
 
   setWasOpen(wasOpen) {
-    this.setState({
+    this.setAuxiliaryState({
       wasOpen,
     });
   }
@@ -740,7 +749,7 @@ class Going {
   blockScrollWhenDialogVisible(isVisible) {
     const html = window.top.document.documentElement;
     const iframe = this.iframe;
-    const wasOpen = this.state.wasOpen;
+    const wasOpen = this.auxiliaryState.wasOpen;
 
     const visible = isVisible === true || isVisible === 'true';
 
@@ -752,7 +761,7 @@ class Going {
             window.top.document.documentElement.scrollTop;
 
       if (scrollPosY) {
-        // this.setLastScrollPos(scrollPosY);
+        this.setLastScrollPos(scrollPosY);
       }
 
       html.style.overflow = 'hidden';
@@ -760,14 +769,14 @@ class Going {
       iframe.style.zIndex = '99999';
       iframe.style.top = '0';
 
-      // this.setWasOpen(true);
+      this.setWasOpen(true);
     } else if (!visible && wasOpen) {
       html.style.overflow = 'scroll';
       iframe.style.position = '';
       iframe.style.zIndex = '';
       iframe.style.top = '';
 
-      const lastScrollPosY = this.state.lastScrollPosY;
+      const lastScrollPosY = this.auxiliaryState.lastScrollPosY;
       console.log({ lastScrollPosY });
 
       if (lastScrollPosY) window.top.scrollTo({ top: lastScrollPosY });
