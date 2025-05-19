@@ -768,6 +768,8 @@ class Going {
       iframe.style.position = 'fixed';
       iframe.style.zIndex = '99999';
       iframe.style.top = '0';
+      iframe.style.transition = '0.1';
+      iframe.style.filter = 'blur(16px)';
 
       this.setWasOpen(true);
     } else if (!visible && wasOpen) {
@@ -775,6 +777,8 @@ class Going {
       iframe.style.position = '';
       iframe.style.zIndex = '';
       iframe.style.top = '';
+      iframe.style.transition = '';
+      iframe.style.filter = '';
 
       const lastScrollPosY = this.auxiliaryState.lastScrollPosY;
       console.log({ lastScrollPosY });
@@ -782,7 +786,7 @@ class Going {
       if (lastScrollPosY) {
         console.log('dzieje się2?', lastScrollPosY);
         setTimeout(() => {
-          window.top.scrollTo({ top: lastScrollPosY });
+          window.top.scrollTo({ top: lastScrollPosY, behavior: 'smooth' });
         }, 1);
         console.log('czy nie?2');
       }
