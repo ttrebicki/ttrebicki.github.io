@@ -34,6 +34,7 @@ class Going {
     isInNestedIframe: null,
     language: null,
     lastScrollPosY: null,
+    wasOpen: false,
   };
 
   iframeLoaded = false;
@@ -343,6 +344,12 @@ class Going {
   setLastScrollPos(lastScrollPosY) {
     this.setState({
       lastScrollPosY,
+    });
+  }
+
+  setWasOpen(wasOpen) {
+    this.setState({
+      wasOpen,
     });
   }
 
@@ -751,7 +758,9 @@ class Going {
       iframe.style.position = 'fixed';
       iframe.style.zIndex = '99999';
       iframe.style.top = '0';
-    } else {
+
+      this.setWasOpen(true);
+    } else if (!isVisible && this.state.wasOpen) {
       html.style.overflow = '';
       iframe.style.position = '';
       iframe.style.zIndex = '';
@@ -762,6 +771,7 @@ class Going {
 
       if (lastScrollPosY) window.top.scrollTo({ top: lastScrollPosY });
       this.setLastScrollPos(null);
+      this.setWasOpen(false);
     }
   }
 
