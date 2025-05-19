@@ -779,10 +779,13 @@ class Going {
       const lastScrollPosY = this.auxiliaryState.lastScrollPosY;
       console.log({ lastScrollPosY });
 
-      if (lastScrollPosY)
+      if (lastScrollPosY) {
+        console.log('dzieje się?');
         setTimeout(
           window.top.scrollTo({ top: lastScrollPosY, behavior: 'smooth' }, 3500)
         );
+        console.log('czy nie?');
+      }
       this.setLastScrollPos(null);
       this.setWasOpen(false);
     }
