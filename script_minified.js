@@ -780,9 +780,11 @@ class Going {
       console.log({ lastScrollPosY });
 
       if (lastScrollPosY) {
-        console.log('dzieje się?', lastScrollPosY);
-        window.top.scrollTo({ top: lastScrollPosY });
-        console.log('czy nie?');
+        console.log('dzieje się2?', lastScrollPosY);
+        setTimeout(() => {
+          window.top.scrollTo({ top: lastScrollPosY });
+        }, 1);
+        console.log('czy nie?2');
       }
       this.setLastScrollPos(null);
       this.setWasOpen(false);
@@ -898,12 +900,11 @@ class Going {
   }
 
   setPositionTop(event) {
-    console.log('setPositionTop');
-    // if (!event.detail || event.detail === 0) {
-    //   this.scrollToIframeTop();
-    // } else {
-    //   window.scrollTo(0, event.detail);
-    // }
+    if (!event.detail || event.detail === 0) {
+      this.scrollToIframeTop();
+    } else {
+      window.scrollTo(0, event.detail);
+    }
   }
 
   refreshPage() {
