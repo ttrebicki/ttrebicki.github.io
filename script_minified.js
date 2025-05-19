@@ -731,7 +731,7 @@ class Going {
     if (visible) {
       html.style.overflow = 'hidden';
     } else {
-      html.style.overflow = '';
+      html.style.overflow = 'scroll';
     }
   }
 
