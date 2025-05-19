@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", function () {
 const isQueueInAddress = window.location.href.includes("queue=true");
 const domain = isQueueInAddress
   ? "https://queue.goingapp.pl"
-  : "http://localhost:5173";
+  : "https://goingapp.pl";
 
 window.addEventListener("message", (event) => {
   const data = JSON.parse(event.data);
