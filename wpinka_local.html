@@ -13,244 +13,94 @@
 <script type="text/javascript">
 <script>
 const eventSlug = "it-unplugged";
-
-
 const rundateSlug = "lublin-czerwiec-2025";
 
-
 window.addEventListener("DOMContentLoaded", function () {
+  const iframeContainer = document.getElementById("going_frame");
+  const loadingElement = document.createElement("div");
 
- const iframeContainer = document.getElementById("going_frame");
+  if (document.getElementById("loading-element")) {
+    return;
+  }
 
+  loadingElement.innerHTML = `
+    <h2 id="loading-prompt">Trwa ładowanie formularza sprzedaży.</h2>
+    <h3>Formularz nie działa? Kup bilety w <a href="https://goingapp.pl/" rel="dofollow">Going.</a></h3>
+  `;
 
- const loadingElement = document.createElement("div");
+  loadingElement.id = "loading-element";
+  loadingElement.style.fontFamily = "Helvetica, sans-serif";
+  loadingElement.style.textAlign = "center";
+  loadingElement.style.padding = "16px";
 
-
- if (document.getElementById("loading-element")) {
-
-   return;
-
- }
-
-
- loadingElement.innerHTML = `
-
-
-         <h2 id="loading-prompt">Trwa ładowanie formularza sprzedaży.</h2>
-
-
-         <h3>Formularz nie działa? Kup bilety w <a href="https://goingapp.pl/" rel="dofollow">Going.</a></h3>
-
-
-       `;
-
-
- loadingElement.id = "loading-element";
-
-
- loadingElement.style.fontFamily = "Helvetica, sans-serif";
-
-
- loadingElement.style.textAlign = "center";
-
-
- loadingElement.style.padding = "16px";
-
-
- if (iframeContainer) {
-
-   iframeContainer.append(loadingElement);
-
- }
-
+  if (iframeContainer) {
+    iframeContainer.append(loadingElement);
+  }
 });
-
 
 (function (G, o, i, n, g) {
+  G.going =
+    G.going ||
+    function () {
+      [].push.apply((G.goingQ = G.goingQ || []), arguments);
+    };
 
- G.going =
+  G.goingSettings = { gv: "1.0.7" };
 
-   G.going ||
-
-   function () {
-
-     [].push.apply((G.goingQ = G.goingQ || []), arguments);
-
-   };
-
-
- G.goingSettings = { gv: "1.0.7" };
-
-
- n = o.getElementsByTagName("head")[0];
-
-
- g = o.createElement("script");
-
-
- g.async = true;
-
-
- g.src = i + "?gv=" + G.goingSettings.gv;
-
-
- n.appendChild(g);
-
+  n = o.getElementsByTagName("head")[0];
+  g = o.createElement("script");
+  g.async = true;
+  g.src = i + "?gv=" + G.goingSettings.gv;
+  n.appendChild(g);
 })(window, document, "https://places-script.goingapp.pl/script.js");
 
-
 const isQueueInAddress = window.location.href.includes("queue=true");
-
-
 const domain = isQueueInAddress
-
- ? "https://queue.goingapp.pl"
-
- : "https://goingapp.pl";
-
+  ? "https://queue.goingapp.pl"
+  : "http://localhost:5173";
 
 window.addEventListener("message", (event) => {
+  const data = JSON.parse(event.data);
 
- const data = JSON.parse(event.data);
+  if (data.queue && !isQueueInAddress) {
+    const url = new URL(window.location.href);
+    url.searchParams.append("queue", "true");
+    window.location.assign(url.origin + url.pathname + url.search);
+  }
 
-
- if (data.queue && !isQueueInAddress) {
-
-   const url = new URL(window.location.href);
-
-
-   url.searchParams.append("queue", "true");
-
-
-   window.location.assign(url.origin + url.pathname + url.search);
-
- }
-
-
- if (
-
-   data &&
-
-   document.getElementById("loading-prompt") &&
-
-   document.getElementById("going_frame")
-
- ) {
-
-   document.getElementById("loading-prompt")?.remove();
-
-
-   document
-
-
-     .getElementById("going_frame")
-
-
-     .append(document.getElementById("loading-element"));
-
- }
-
+  if (
+    data &&
+    document.getElementById("loading-prompt") &&
+    document.getElementById("going_frame")
+  ) {
+    document.getElementById("loading-prompt")?.remove();
+    document
+      .getElementById("going_frame")
+      .append(document.getElementById("loading-element"));
+  }
 });
 
-
 going(
-
- {
-
-   type: "SET_PARENT",
-
-
-   payload: "going_frame",
-
- },
-
-
- {
-
-   type: "SET_APP_URL",
-
-
-   payload: `${domain}/buying/${eventSlug}/${rundateSlug}`,
-
- },
-
-
- {
-
-   type: "GET_ERROR_FROM_URL",
-
-
-   payload: "error",
-
- },
-
-
- {
-
-   type: "SET_CURRENT_URL",
-
-
-   payload: window.location.href,
-
- },
-
-
- {
-
-   type: "GET_TRANSACTION_FROM_URL",
-
-
-   payload: "transactionId",
-
- },
-
-
- {
-
-   type: "GET_EVENT_SLUG_FROM_URL",
-
-
-   payload: "eSlug",
-
- },
-
-
- {
-
-   type: "GET_RUNDATE_SLUG_FROM_URL",
-
-
-   payload: "rSlug",
-
- },
-
-
- {
-
-   type: "GET_EVENT_ID_FROM_URL",
-
-
-   payload: "rid",
-
- },
-
- {
-
-   type: "LOAD_EXTERNAL_STYLE",
-
-   payload:
-
-     "https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/it-unplugged.css",
-
- }
-
+  { type: "SET_PARENT", payload: "going_frame" },
+  {
+    type: "SET_APP_URL",
+    payload: `${domain}/buying/${eventSlug}/${rundateSlug}`,
+  },
+  { type: "GET_ERROR_FROM_URL", payload: "error" },
+  { type: "SET_CURRENT_URL", payload: window.location.href },
+  { type: "GET_TRANSACTION_FROM_URL", payload: "transactionId" },
+  { type: "GET_EVENT_SLUG_FROM_URL", payload: "eSlug" },
+  { type: "GET_RUNDATE_SLUG_FROM_URL", payload: "rSlug" },
+  { type: "GET_EVENT_ID_FROM_URL", payload: "rid" },
+  {
+    type: "LOAD_EXTERNAL_STYLE",
+    payload:
+      "https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/it-unplugged.css",
+  }
 );
 
-
 if (window.location.href.includes("transactionId")) {
-
- document.getElementById("loading-element").remove();
-
+  document.getElementById("loading-element").remove();
 }
 </script>
 </script>
