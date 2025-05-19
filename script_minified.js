@@ -740,6 +740,7 @@ class Going {
   blockScrollWhenDialogVisible(isVisible) {
     const html = window.top.document.documentElement;
     const iframe = this.iframe;
+    const wasOpen = this.state.wasOpen;
 
     const visible = isVisible === true || isVisible === 'true';
 
@@ -751,7 +752,7 @@ class Going {
             window.top.document.documentElement.scrollTop;
 
       if (scrollPosY) {
-        // this.setLastScrollPos(scrollPosY);
+        this.setLastScrollPos(scrollPosY);
       }
 
       html.style.overflow = 'hidden';
@@ -760,7 +761,7 @@ class Going {
       iframe.style.top = '0';
 
       this.setWasOpen(true);
-    } else if (!isVisible && this.state.wasOpen) {
+    } else if (!isVisible && wasOpen) {
       html.style.overflow = '';
       iframe.style.position = '';
       iframe.style.zIndex = '';
