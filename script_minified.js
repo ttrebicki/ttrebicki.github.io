@@ -760,8 +760,7 @@ class Going {
       const lastScrollPosY = this.state.lastScrollPosY;
       console.log({ lastScrollPosY });
 
-      if (lastScrollPosY)
-        window.top.scrollTo({ top: this.state.lastScrollPosY });
+      if (lastScrollPosY) window.top.scrollTo({ top: lastScrollPosY });
       this.setLastScrollPos(null);
     }
   }
