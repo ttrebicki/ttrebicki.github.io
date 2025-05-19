@@ -750,7 +750,7 @@ class Going {
     const html = window.top.document.documentElement;
     const iframe = this.iframe;
     const wasOpen = this.auxiliaryState.wasOpen;
-    const appRootElement = document.getElementById('root');
+    const appRootElement = document.getElementById('main');
 
     const visible = isVisible === true || isVisible === 'true';
 
