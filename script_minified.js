@@ -751,7 +751,7 @@ class Going {
             window.top.document.documentElement.scrollTop;
 
       if (scrollPosY) {
-        this.setLastScrollPos(scrollPosY);
+        // this.setLastScrollPos(scrollPosY);
       }
 
       html.style.overflow = 'hidden';
