@@ -762,7 +762,7 @@ class Going {
 
       // this.setWasOpen(true);
     } else if (!isVisible && wasOpen) {
-      html.style.overflow = '';
+      html.style.overflow = 'scroll';
       iframe.style.position = '';
       iframe.style.zIndex = '';
       iframe.style.top = '';
