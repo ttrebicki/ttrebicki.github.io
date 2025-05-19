@@ -782,7 +782,7 @@ class Going {
 
       if (lastScrollPosY) {
         setTimeout(() => {
-          window.top.scrollTo({ top: lastScrollPosY, behavior: 'smooth' });
+          window.top.scrollTo({ top: lastScrollPosY });
         }, 1);
       }
       this.setLastScrollPos(null);
