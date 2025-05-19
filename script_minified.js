@@ -760,7 +760,7 @@ class Going {
       iframe.style.zIndex = '99999';
       iframe.style.top = '0';
 
-      this.setWasOpen(true);
+      // this.setWasOpen(true);
     } else if (!isVisible && wasOpen) {
       html.style.overflow = '';
       iframe.style.position = '';
