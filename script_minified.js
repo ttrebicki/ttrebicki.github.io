@@ -752,7 +752,7 @@ class Going {
             window.top.document.documentElement.scrollTop;
 
       if (scrollPosY) {
-        // this.setLastScrollPos(scrollPosY);
+        this.setLastScrollPos(scrollPosY);
       }
 
       html.style.overflow = 'hidden';
@@ -760,19 +760,19 @@ class Going {
       iframe.style.zIndex = '99999';
       iframe.style.top = '0';
 
-      // this.setWasOpen(true);
-    } else if (!visible) {
+      this.setWasOpen(true);
+    } else if (!visible && wasOpen) {
       html.style.overflow = 'scroll';
       iframe.style.position = '';
       iframe.style.zIndex = '';
       iframe.style.top = '';
 
-      // const lastScrollPosY = this.state.lastScrollPosY;
-      // console.log({ lastScrollPosY });
+      const lastScrollPosY = this.state.lastScrollPosY;
+      console.log({ lastScrollPosY });
 
-      // if (lastScrollPosY) window.top.scrollTo({ top: lastScrollPosY });
-      // this.setLastScrollPos(null);
-      // this.setWasOpen(false);
+      if (lastScrollPosY) window.top.scrollTo({ top: lastScrollPosY });
+      this.setLastScrollPos(null);
+      this.setWasOpen(false);
     }
   }
 
