@@ -725,13 +725,20 @@ class Going {
 
   blockScrollWhenDialogVisible(isVisible) {
     const html = window.top.document.documentElement;
+    const iframe = this.iframe;
 
     const visible = isVisible === true || isVisible === 'true';
 
     if (visible) {
       html.style.overflow = 'hidden';
+      iframe.style.position = 'fixed';
+      iframe.style.zIndex = '99999';
+      iframe.style.top = '0';
     } else {
-      html.style.overflow = 'scroll';
+      html.style.overflow = '';
+      iframe.style.position = '';
+      iframe.style.zIndex = '';
+      iframe.style.top = '';
     }
   }
 
