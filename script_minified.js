@@ -767,12 +767,12 @@ class Going {
       iframe.style.zIndex = '';
       iframe.style.top = '';
 
-      const lastScrollPosY = this.state.lastScrollPosY;
-      console.log({ lastScrollPosY });
+      // const lastScrollPosY = this.state.lastScrollPosY;
+      // console.log({ lastScrollPosY });
 
-      if (lastScrollPosY) window.top.scrollTo({ top: lastScrollPosY });
-      this.setLastScrollPos(null);
-      this.setWasOpen(false);
+      // if (lastScrollPosY) window.top.scrollTo({ top: lastScrollPosY });
+      // this.setLastScrollPos(null);
+      // this.setWasOpen(false);
     }
   }
 
