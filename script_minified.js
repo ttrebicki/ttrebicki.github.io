@@ -761,7 +761,7 @@ class Going {
       iframe.style.top = '0';
 
       // this.setWasOpen(true);
-    } else if (!isVisible && wasOpen) {
+    } else if (!isVisible) {
       html.style.overflow = 'scroll';
       iframe.style.position = '';
       iframe.style.zIndex = '';
