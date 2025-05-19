@@ -752,7 +752,7 @@ class Going {
             window.top.document.documentElement.scrollTop;
 
       if (scrollPosY) {
-        this.setLastScrollPos(scrollPosY);
+        // this.setLastScrollPos(scrollPosY);
       }
 
       html.style.overflow = 'hidden';
@@ -760,7 +760,7 @@ class Going {
       iframe.style.zIndex = '99999';
       iframe.style.top = '0';
 
-      this.setWasOpen(true);
+      // this.setWasOpen(true);
     } else if (!visible && wasOpen) {
       html.style.overflow = 'scroll';
       iframe.style.position = '';
