@@ -750,7 +750,6 @@ class Going {
     const html = window.top.document.documentElement;
     const iframe = this.iframe;
     const wasOpen = this.auxiliaryState.wasOpen;
-    const appRootElement = document.getElementById('main');
 
     const visible = isVisible === true || isVisible === 'true';
 
@@ -771,8 +770,6 @@ class Going {
       iframe.style.top = '0';
       iframe.style.transition = '0.1';
 
-      appRootElement.style.filter = 'blur(16px)';
-
       this.setWasOpen(true);
     } else if (!visible && wasOpen) {
       html.style.overflow = 'scroll';
@@ -780,7 +777,6 @@ class Going {
       iframe.style.zIndex = '';
       iframe.style.top = '';
       iframe.style.transition = '';
-      appRootElement.style.filter = '';
 
       const lastScrollPosY = this.auxiliaryState.lastScrollPosY;
 
