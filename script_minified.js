@@ -33,6 +33,7 @@ class Going {
     formIoId: null,
     isInNestedIframe: null,
     language: null,
+    lastScrollPosY: null,
   };
 
   iframeLoaded = false;
@@ -337,6 +338,12 @@ class Going {
     this.state = Object.assign(this.state, stateFragment);
 
     this.refresh();
+  }
+
+  setLastScrollPos(lastScrollPosY) {
+    this.setState({
+      lastScrollPosY,
+    });
   }
 
   refresh() {
@@ -690,6 +697,8 @@ class Going {
           : window.top.pageYOffset ||
             window.top.document.documentElement.scrollTop;
 
+      this.setLastScrollPos(scrollPosY);
+
       const payload = {
         viewportHeight: window.top.innerHeight,
         scrollPosY,
@@ -739,6 +748,10 @@ class Going {
       iframe.style.position = '';
       iframe.style.zIndex = '';
       iframe.style.top = '';
+
+      const lastScrollPosY = this.state.lastScrollPosY;
+      if (lastScrollPosY) window.top.scrollTo(this.state.lastScrollPosY);
+      this.setLastScrollPos(null);
     }
   }
 
