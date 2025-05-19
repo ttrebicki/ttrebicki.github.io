@@ -697,8 +697,6 @@ class Going {
           : window.top.pageYOffset ||
             window.top.document.documentElement.scrollTop;
 
-      this.setLastScrollPos(scrollPosY);
-
       const payload = {
         viewportHeight: window.top.innerHeight,
         scrollPosY,
@@ -739,6 +737,16 @@ class Going {
     const visible = isVisible === true || isVisible === 'true';
 
     if (visible) {
+      const scrollPosY =
+        window.top.scrollY !== undefined
+          ? window.top.scrollY
+          : window.top.pageYOffset ||
+            window.top.document.documentElement.scrollTop;
+
+      if (scrollPosY) {
+        this.setLastScrollPos(scrollPosY);
+      }
+
       html.style.overflow = 'hidden';
       iframe.style.position = 'fixed';
       iframe.style.zIndex = '99999';
