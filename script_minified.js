@@ -758,7 +758,10 @@ class Going {
       iframe.style.top = '';
 
       const lastScrollPosY = this.state.lastScrollPosY;
-      if (lastScrollPosY) window.top.scrollTo(this.state.lastScrollPosY);
+      console.log({ lastScrollPosY });
+
+      if (lastScrollPosY)
+        window.top.scrollTo({ top: this.state.lastScrollPosY });
       this.setLastScrollPos(null);
     }
   }
