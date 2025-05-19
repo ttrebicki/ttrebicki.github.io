@@ -750,6 +750,7 @@ class Going {
     const html = window.top.document.documentElement;
     const iframe = this.iframe;
     const wasOpen = this.auxiliaryState.wasOpen;
+    const appRootElement = document.getElementById('root');
 
     const visible = isVisible === true || isVisible === 'true';
 
@@ -769,7 +770,8 @@ class Going {
       iframe.style.zIndex = '99999';
       iframe.style.top = '0';
       iframe.style.transition = '0.1';
-      iframe.style.filter = 'blur(16px)';
+
+      appRootElement.style.filter = 'blur(16px)';
 
       this.setWasOpen(true);
     } else if (!visible && wasOpen) {
@@ -778,17 +780,14 @@ class Going {
       iframe.style.zIndex = '';
       iframe.style.top = '';
       iframe.style.transition = '';
-      iframe.style.filter = '';
+      appRootElement.style.filter = '';
 
       const lastScrollPosY = this.auxiliaryState.lastScrollPosY;
-      console.log({ lastScrollPosY });
 
       if (lastScrollPosY) {
-        console.log('dzieje się2?', lastScrollPosY);
         setTimeout(() => {
           window.top.scrollTo({ top: lastScrollPosY, behavior: 'smooth' });
         }, 1);
-        console.log('czy nie?2');
       }
       this.setLastScrollPos(null);
       this.setWasOpen(false);
