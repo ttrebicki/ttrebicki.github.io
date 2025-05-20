@@ -759,17 +759,14 @@ class Going {
           ? window.top.scrollY
           : window.top.pageYOffset ||
             window.top.document.documentElement.scrollTop;
-
       if (scrollPosY) {
         this.setLastScrollPos(scrollPosY);
       }
-
       html.style.overflow = 'hidden';
       iframe.style.position = 'fixed';
       iframe.style.zIndex = '99999';
-      iframe.style.top = '0';
+      iframe.style.top = scrollPosY || 0 + 'px';
       iframe.style.transition = '0.1';
-
       this.setWasOpen(true);
     } else if (!visible && wasOpen) {
       html.style.overflow = 'scroll';
@@ -777,9 +774,7 @@ class Going {
       iframe.style.zIndex = '';
       iframe.style.top = '';
       iframe.style.transition = '';
-
       const lastScrollPosY = this.auxiliaryState.lastScrollPosY;
-
       if (lastScrollPosY) {
         setTimeout(() => {
           window.top.scrollTo({ top: lastScrollPosY });
