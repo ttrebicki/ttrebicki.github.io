@@ -11,8 +11,8 @@
     <a href="https://ttrebicki.github.io/wpinka_local.html">BUTTON</a>
     
 <script type="text/javascript">
-const eventSlug = "it-unplugged";
-const rundateSlug = "lublin-czerwiec-2025";
+const eventSlug = "potwor";
+const rundateSlug = "warszawa-maj-2025";
 
 window.addEventListener("DOMContentLoaded", function () {
   const iframeContainer = document.getElementById("going_frame");
@@ -98,11 +98,11 @@ going(
   { type: "GET_EVENT_SLUG_FROM_URL", payload: "eSlug" },
   { type: "GET_RUNDATE_SLUG_FROM_URL", payload: "rSlug" },
   { type: "GET_EVENT_ID_FROM_URL", payload: "rid" },
-  {
-    type: "LOAD_EXTERNAL_STYLE",
-    payload:
-      "https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/it-unplugged.css",
-  }
+  // {
+  //   type: "LOAD_EXTERNAL_STYLE",
+  //   payload:
+  //     "https://embed-config-meqesdpgvc.s3-eu-west-1.amazonaws.com/it-unplugged.css",
+  // }
 );
 
 if (window.location.href.includes("transactionId")) {
