@@ -59,7 +59,14 @@ const domain = isQueueInAddress
   : "http://localhost:5173";
 
 window.addEventListener("message", (event) => {
-  const data = JSON.parse(event.data);
+  let data;
+
+  try {
+    data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+  } catch (e) {
+    // console.error("Failed to parse event.data", event.data, e);
+    return;
+  }
 
   if (data.queue && !isQueueInAddress) {
     const url = new URL(window.location.href);
