@@ -64,7 +64,7 @@ window.addEventListener("message", (event) => {
   try {
     data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
   } catch (e) {
-    // console.error("Failed to parse event.data", event.data, e);
+    console.error("Failed to parse event.data", event.data, e);
     return;
   }
 
