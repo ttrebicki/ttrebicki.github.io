@@ -718,6 +718,8 @@ class Going {
         scrollPosY,
       };
 
+      console.log({ payload });
+
       this.sendMessageToChild({
         type: 'SEND_IFRAME_PARENT_VIEWPORT_HEIGHT_AND_SCROLL_POS',
         payload,
