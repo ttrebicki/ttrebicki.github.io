@@ -1030,9 +1030,8 @@ class Going {
       this.sendIframeParentViewportHeightAndScrollPos.bind(this)
     );
 
-    document.addEventListener(
-      'goingGetNestedIframeLayoutData',
-      this.toggleScrollPositionCheck.bind(this)
+    document.addEventListener('goingGetNestedIframeLayoutData', (event) =>
+      this.toggleScrollPositionCheck(event.detail)
     );
 
     document.addEventListener('goingBlockScrollWhenDialogVisible', (event) =>
