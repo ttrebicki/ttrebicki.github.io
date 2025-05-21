@@ -88,17 +88,17 @@ class Going {
       this.sendIframeParentViewportHeightAndScrollPos
     );
     window.removeEventListener('scroll', this.sendIframeRelativeScrollPosition);
-    if (window.top)
-      window.top.removeEventListener(
-        'scroll',
-        this.sendIframeParentViewportHeightAndScrollPos
-      );
 
     document.removeEventListener('goingSetSession', this.addCloseListener);
 
     document.removeEventListener(
       'goingBlockScrollWhenDialogVisible',
       this.blockScrollWhenDialogVisible
+    );
+
+    document.removeEventListener(
+      'goingGetNestedIframeLayoutData',
+      this.toggleScrollPositionCheck.bind(this)
     );
   }
 
@@ -730,6 +730,28 @@ class Going {
     }
   }
 
+  toggleScrollPositionCheck(isVisible) {
+    try {
+      if (isVisible === 'true') {
+        if (window.top) {
+          window.top.addEventListener(
+            'scroll',
+            this.sendIframeParentViewportHeightAndScrollPos.bind(this)
+          );
+        } else {
+          if (window.top) {
+            window.top.removeEventListener(
+              'scroll',
+              this.sendIframeParentViewportHeightAndScrollPos.bind(this)
+            );
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Unable to toggle scroll position check:', error);
+    }
+  }
+
   sendIframeRelativeScrollPosition() {
     // TODO: change name to sendModalPosition in all places when there's space
     if (this.iframe) {
@@ -1008,18 +1030,16 @@ class Going {
       this.sendIframeParentViewportHeightAndScrollPos.bind(this)
     );
 
+    document.addEventListener(
+      'goingGetNestedIframeLayoutData',
+      this.toggleScrollPositionCheck.bind(this)
+    );
+
     document.addEventListener('goingBlockScrollWhenDialogVisible', (event) =>
       this.blockScrollWhenDialogVisible(event.detail)
     );
 
     window.addEventListener('scroll', this.sendIframeRelativeScrollPosition);
-
-    if (window.top) {
-      window.top.addEventListener(
-        'scroll',
-        this.sendIframeParentViewportHeightAndScrollPos.bind(this)
-      );
-    }
   }
 }
 
