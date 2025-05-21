@@ -730,34 +730,12 @@ class Going {
     }
   }
 
-  toggleScrollPositionCheck(isVisible) {
-    try {
-      if (isVisible === 'true') {
-        if (window.top) {
-          window.top.addEventListener(
-            'scroll',
-            this.sendIframeParentViewportHeightAndScrollPos.bind(this)
-          );
-        } else {
-          if (window.top) {
-            window.top.removeEventListener(
-              'scroll',
-              this.sendIframeParentViewportHeightAndScrollPos.bind(this)
-            );
-          }
-        }
-      }
-    } catch (error) {
-      console.error('Unable to toggle scroll position check:', error);
-    }
-  }
-
   sendIframeRelativeScrollPosition() {
     // TODO: change name to sendModalPosition in all places when there's space
     if (this.iframe) {
       const iframeTopOffset = this.iframe.offsetTop;
-      const scrollFromTop = window.scrollY;
-      const halfOfViewport = window.innerHeight / 2;
+      const scrollFromTop = window.top.scrollY;
+      const halfOfViewport = window.top.innerHeight / 2; // TODO: remove .top
 
       const payload = scrollFromTop - iframeTopOffset + halfOfViewport;
 
