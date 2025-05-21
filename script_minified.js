@@ -775,8 +775,6 @@ class Going {
 
     const visible = isVisible === true || isVisible === 'true';
 
-    console.log({ visible, isVisible, html, iframe });
-
     if (visible) {
       const scrollPosY =
         window.top.scrollY !== undefined
