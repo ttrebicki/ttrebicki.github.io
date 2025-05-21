@@ -83,23 +83,17 @@ class Going {
       'goingGetIframeRelativeScrollPosition',
       this.sendIframeRelativeScrollPosition
     );
-    document.removeEventListener(
-      'goingGetIframeRelativeScrollPosition',
-      this.sendIframeParentViewportHeightAndScrollPos
-    );
     window.removeEventListener('scroll', this.sendIframeRelativeScrollPosition);
-
     document.removeEventListener('goingSetSession', this.addCloseListener);
 
-    document.removeEventListener(
-      'goingBlockScrollWhenDialogVisible',
-      this.blockScrollWhenDialogVisible
-    );
-
-    document.removeEventListener(
-      'goingGetNestedIframeLayoutData',
-      this.toggleScrollPositionCheck.bind(this)
-    );
+    try {
+      window.top.removeEventListener(
+        'scroll',
+        this.sendIframeRelativeScrollPosition
+      );
+    } catch (error) {
+      console.error();
+    }
   }
 
   addCloseListener() {
@@ -705,37 +699,12 @@ class Going {
     }
   }
 
-  sendIframeParentViewportHeightAndScrollPos() {
-    try {
-      const scrollPosY =
-        window.top.scrollY !== undefined
-          ? window.top.scrollY
-          : window.top.pageYOffset ||
-            window.top.document.documentElement.scrollTop;
-
-      const payload = {
-        viewportHeight: window.top.innerHeight,
-        scrollPosY,
-      };
-
-      this.sendMessageToChild({
-        type: 'SEND_IFRAME_PARENT_VIEWPORT_HEIGHT_AND_SCROLL_POS',
-        payload,
-      });
-    } catch (error) {
-      console.error(
-        'Unable to access parent scroll position or viewport height:',
-        error
-      );
-    }
-  }
-
   sendIframeRelativeScrollPosition() {
     // TODO: change name to sendModalPosition in all places when there's space
     if (this.iframe) {
       const iframeTopOffset = this.iframe.offsetTop;
-      const scrollFromTop = window.top.scrollY;
-      const halfOfViewport = window.top.innerHeight / 2; // TODO: remove .top
+      const scrollFromTop = window.scrollY;
+      const halfOfViewport = window.innerHeight / 2;
 
       const payload = scrollFromTop - iframeTopOffset + halfOfViewport;
 
@@ -743,45 +712,6 @@ class Going {
         type: 'SEND_IFRAME_RELATIVE_SCROLL_POSITION',
         payload,
       });
-    }
-  }
-
-  blockScrollWhenDialogVisible(isVisible) {
-    const html = window.top.document.documentElement;
-    const iframe = this.iframe;
-    const wasOpen = this.auxiliaryState.wasOpen;
-
-    const visible = isVisible === true || isVisible === 'true';
-
-    if (visible) {
-      const scrollPosY =
-        window.top.scrollY !== undefined
-          ? window.top.scrollY
-          : window.top.pageYOffset ||
-            window.top.document.documentElement.scrollTop;
-      if (scrollPosY) {
-        this.setLastScrollPos(scrollPosY);
-      }
-      html.style.overflow = 'hidden';
-      iframe.style.position = 'fixed';
-      iframe.style.zIndex = '99999';
-      iframe.style.top = scrollPosY || 0 + 'px';
-      iframe.style.transition = '0.1';
-      this.setWasOpen(true);
-    } else if (!visible && wasOpen) {
-      html.style.overflow = 'scroll';
-      iframe.style.position = '';
-      iframe.style.zIndex = '';
-      iframe.style.top = '';
-      iframe.style.transition = '';
-      const lastScrollPosY = this.auxiliaryState.lastScrollPosY;
-      if (lastScrollPosY) {
-        setTimeout(() => {
-          window.top.scrollTo({ top: lastScrollPosY });
-        }, 1);
-      }
-      this.setLastScrollPos(null);
-      this.setWasOpen(false);
     }
   }
 
@@ -1001,20 +931,20 @@ class Going {
       this.sendIframeRelativeScrollPosition.bind(this)
     );
 
-    document.addEventListener(
-      'goingGetNestedIframeLayoutData',
-      this.sendIframeParentViewportHeightAndScrollPos.bind(this)
-    );
-
-    document.addEventListener('goingGetNestedIframeLayoutData', (event) =>
-      this.toggleScrollPositionCheck(event.detail)
-    );
-
     document.addEventListener('goingBlockScrollWhenDialogVisible', (event) =>
       this.blockScrollWhenDialogVisible(event.detail)
     );
 
     window.addEventListener('scroll', this.sendIframeRelativeScrollPosition);
+
+    try {
+      window.top.addEventListener(
+        'scroll',
+        this.sendIframeRelativeScrollPosition
+      );
+    } catch (error) {
+      console.error();
+    }
   }
 }
 
