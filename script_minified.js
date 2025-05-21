@@ -940,7 +940,7 @@ class Going {
     try {
       window.top.addEventListener(
         'scroll',
-        this.sendIframeRelativeScrollPosition
+        this.sendIframeRelativeScrollPosition.bind(this)
       );
     } catch (error) {
       console.error();
