@@ -753,7 +753,7 @@ class Going {
 
     const visible = isVisible === true || isVisible === 'true';
 
-    console.log({ visible });
+    console.log({ visible, isVisible });
 
     if (visible) {
       const scrollPosY =
