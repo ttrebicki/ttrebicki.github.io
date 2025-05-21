@@ -85,15 +85,6 @@ class Going {
     );
     window.removeEventListener('scroll', this.sendIframeRelativeScrollPosition);
     document.removeEventListener('goingSetSession', this.addCloseListener);
-
-    try {
-      window.top.removeEventListener(
-        'scroll',
-        this.sendIframeRelativeScrollTopPosition
-      );
-    } catch (error) {
-      console.error();
-    }
   }
 
   addCloseListener() {
@@ -715,25 +706,6 @@ class Going {
     }
   }
 
-  sendIframeRelativeScrollTopPosition() {
-    try {
-      if (this.iframe) {
-        const iframeTopOffset = this.iframe.offsetTop;
-        const scrollFromTop = window.top.scrollY;
-        const halfOfViewport = window.top.innerHeight / 2;
-
-        const payload = scrollFromTop - iframeTopOffset + halfOfViewport;
-
-        this.sendMessageToChild({
-          type: 'SEND_IFRAME_RELATIVE_SCROLL_POSITION',
-          payload,
-        });
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
   sendLoaderPositionTop() {
     const iframeHeight = this.iframe.offsetHeight;
     const positionTopIframe = this.iframe.offsetTop;
@@ -955,15 +927,6 @@ class Going {
     );
 
     window.addEventListener('scroll', this.sendIframeRelativeScrollPosition);
-
-    try {
-      window.top.addEventListener(
-        'scroll',
-        this.sendIframeRelativeScrollTopPosition
-      );
-    } catch (error) {
-      console.error();
-    }
   }
 }
 
