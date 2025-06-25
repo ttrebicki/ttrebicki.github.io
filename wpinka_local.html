@@ -55,8 +55,8 @@ window.addEventListener("DOMContentLoaded", function () {
 
 const isQueueInAddress = window.location.href.includes("queue=true");
 const domain = isQueueInAddress
-  ? "https://queue.goingapp.pl" : "http://localhost:5173";
-  // : "https://deploy-preview-4377--goingapp.netlify.app";
+  ? "https://queue.goingapp.pl"
+  : "https://deploy-preview-4377--goingapp.netlify.app";
 
 window.addEventListener("message", (event) => {
   let data;
