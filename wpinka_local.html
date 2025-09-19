@@ -24,7 +24,7 @@
         window.dataLayer = []
     }
 
-    if (typeof isJsonString(event.data)) {
+    if (isJsonString(event.data)) {
         window.dataLayer.push(JSON.parse(event.data));
     }
 });  
