@@ -12,13 +12,14 @@
     
 <script type="text/javascript">
  window.addEventListener('message', (event) => {
-          if (typeof dataLayer === 'undefined') {
-            const dataLayer = [];
-            dataLayer.push(JSON.parse(event.data));
-          } else {
-            dataLayer.push(JSON.parse(event.data));
-          }
-        });  
+    if (typeof window.dataLayer === 'undefined') {
+        const dataLayer = []
+    }
+
+    if (typeof event.data === 'object') {
+        dataLayer.push(JSON.parse(event.data));
+    }
+});  
       window.addEventListener("DOMContentLoaded", function () {
         const iframeContainer = document.getElementById('going_frame');
         const loadingElement = document.createElement("div");
