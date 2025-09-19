@@ -13,11 +13,11 @@
 <script type="text/javascript">
  window.addEventListener('message', (event) => {
     if (typeof window.dataLayer === 'undefined') {
-        const dataLayer = []
+        const window.dataLayer = []
     }
 
     if (typeof event.data === 'object') {
-        dataLayer.push(JSON.parse(event.data));
+        window.dataLayer.push(JSON.parse(event.data));
     }
 });  
       window.addEventListener("DOMContentLoaded", function () {
