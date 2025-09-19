@@ -11,12 +11,20 @@
     <a href="https://ttrebicki.github.io/wpinka_local.html">BUTTON</a>
     
 <script type="text/javascript">
+    function isJsonString(str) {
+  try {
+    JSON.parse(str);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
  window.addEventListener('message', (event) => {
     if (typeof window.dataLayer === 'undefined') {
         window.dataLayer = []
     }
 
-    if (typeof event.data === 'object') {
+    if (typeof isJsonString(event.data)) {
         window.dataLayer.push(JSON.parse(event.data));
     }
 });  
